@@ -9,117 +9,136 @@
 
         body {
             background-color: rgb(30, 30, 30);
-            background-image: url("cyberpunk.gif");
+            background-image: url("synthwave.gif");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-        }
-
-        div.Breif {
-            color:  rgb(212, 212, 212);
-            font-family: consolas_;
-            white-space: pre-line;
-        }
-
-        img {
-            transition: transform 0.25s ease;
         }
         
         img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
             display: none;
         }
-        
-        img:hover {
-            -webkit-transform: scale(2);
-            transform: scale(2);
-        }
-        
-        div.Answer {
-            text-align: center;
-            color:  rgb(212, 212, 212);
-            font-family: consolas_;
-            margin-top: 10px;
-            padding: 18px;
-        }
 
-        button {
-            text-align: center;
-            cursor: pointer;
-            color:  rgb(212, 212, 212);
-            font-family: consolas_;
-            font-size: 90%;
-            background-color: rgb(20, 20, 20);
-            border-radius: 15px 15px 0px 0px;
-            padding: 20px;
-            margin-top: 10px;
-        }
-
-        div.login {
+        div.MenuBar {
             position: absolute;
-            top: 40%;
-            left: 50%;
-            margin-top: -350px;
-            margin-left: -250px;
-            width: 500px;
-            height: 700px;
+            top: 0%;
+            left: 0%;
+            margin-top: 30px;
+            margin-left: 0px;
+            width: 20%;
+            height: 90%;
+            border-radius: 0px 15px 15px 0px;
+            background: rgba(30, 30, 30, 0.95);
+            text-align: center;
+            color:  rgb(212, 212, 212);
+            font-family: consolas_;
+            padding: 18px;
+            font-size: 200%;
+            overflow: auto;
+        }
+
+        div.MenuLink {
+            margin-top: 30px;
+            width: 100%;
+            height: 40px;
             border-radius: 15px;
-            background: rgb(30, 30, 30);
+            background: rgba(20, 20, 20, 0.95);
+            color:  rgb(112, 112, 112);
+        }
+
+        div.PageInfo {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            margin-top: 30px;
+            margin-left: 30%;
+            width: 60%;
+            height: 90%;
+            border-radius: 15px;
+            background: rgba(30, 30, 30, 0.95);
             padding: 20px;
+            overflow: auto;
+        }
+
+        div.InfoBox {
+            margin-top: 30px;
+            padding: 1%;
+            width: 98%;
+            border-radius: 15px;
+            background: rgba(20, 20, 20, 0.95);
+            color:  rgb(112, 112, 112);
+            font-family: consolas_;
+            white-space: pre-line;
         }
 
     </style>
 
     <script type="text/javascript">
-        
-        var insults = ["Haha wrong answer dummy!", "Oh no! You were wrong!", "Nope >:)", "Error: User IQ is too low", "I'm sorry but you got it wrong", "What were you thinking with that answer?!", "The puzzle Gods look down on you with disappointment", "NOOOOOOOOOOOOOOOOOOO"];
-        var url = new URL(window.location.href);
-        var incorrect = url.searchParams.get("answer");
-        if (incorrect != null){
-            alert(insults[Math.floor( Math.random() * insults.length)]);
-        };
-        
-        var d = new Date();
-        var num = d.getDate() % 5;
-
-        function getRandomImage() {
-            document.getElementById("Question").innerHTML = ('<img src="' +'images/' + num +'.png" width="250px">');
-        };
-        
-        function submit(){
-            document.location = "submit.php?Answer="+num + ' ' + document.getElementById("Answer").value;
-        };
-
     </script>
 
 </head>
 
-<body onload="getRandomImage()">
+<body>
 
-    <div class="login">
+    <div class="MenuBar">
+        <a href="home.html"> <img src="logo.png" width="100%"></img> </a>
 
-        <div class="Breif">Welcome to xandprojects! 
+        <a href="code.html"> <div class="MenuLink">Code</div> </a>
+
+        <a href="home.html"> <div class="MenuLink">AI</div> </a>
+
+        <a href="home.html"> <div class="MenuLink">Tech</div> </a>
         
-        Complete the daily challenge (courtesy of Brilliant.org) below and I'll let you see write-ups I've made for some of my coding projects and theories / explainations I've written about reality / physics! How delightful... :/
-        
-        This website is itself an on-going project so you can excpect to find many errors. :D 
-        For the best experience I'd recommend using Chrome on Windows 10 - this is what I've predominantly tested.
-        
-        The daily challenge shouldn't take long but take your time else recieve belittling messages. >:)
-        
-        Tip: You can click on the image to zoom in. 
-        Enjoy! :)
+        <a href="home.html"> <div class="MenuLink">Theories</div> </a>
+
+        <a href="home.html"> <div class="MenuLink">Music</div> </a>
+
+        <a href="home.html"> <div class="MenuLink">Smash</div> </a>
+
+        <a href="home.html"> <div class="MenuLink">Other</div> </a>
+
+        <a href="home.html"> <div class="MenuLink">About</div> </a>
+
+        <a href="home.html"> <div class="MenuLink">Discussion</div> </a>
+
+        <a href="home.html"> <div class="MenuLink">Sources</div> </a>
+    </div>
+
+    <div class="PageInfo">
+        <div class="InfoBox"><h1>Congrats!</h1>Nice job completing the challenge! I hope it wasn't too difficult or took you too long :D 
+            
+            Now that you've done a challenge, just use this URL as a link to my website, you needn't do another. :)
 
         </div>
+        <div class="InfoBox"><h1>Welcome :)</h1>Hey! For some reason, I decided to make a website, and here it is!
+            This website was not made in the 80s, it's my first and I'm most certainly not a web designer so cut me some slack!
+            (If you intend on regularly using this website, you might need to enable a VPN because 000webhost blocks IPs that are using up too much bandwidth on free websites such as this)
 
-        <div id="Question" align="center"></div>
-        
-        <div class="Answer">
-            <label for="ans"><b>Answer:</b></label>
-            <input id="Answer" type="text">
+            On this website you will find:
+
+            <b>Home page</b> - how meta :/
+
+            <b>Coding projects</b> - the code and possibly a write up if I'm motivated enough
+
+            <b>AI projects</b> - these will probably be more explainations of how I got the AI to work, and of what data I trained it on
+
+            <b>Tech projects</b> - projects that I am working on which result in a physical product at the end (never for sale...)
+
+            <b>Theories</b> - most likely naive theories about the universe, both from a physical and phisolophical perspective
+
+            <b>Music compositions</b> - GarageBand compositions and piano pieces I'm working on
+
+            <b>Smash clips</b> - for the rare occasion I get a combo worth sharing
+
+            <b>Other things</b> - I have no idea what will be here :D
+
+            <b>About</b> - on the off chance that you are actually interested in the person behind all of this
+
+            <b>Discussion</b> - feel free to post here: questions, comments about my projects, bugs you found in my website
+
+            <b>Sources</b> - sites I've pulled images / videos / code from 
+
         </div>
-
-        <button type="submit" onclick="submit()">Click to submit your answer and put your ego on the line</button>
-
     </div>
 
 </body>
