@@ -6,10 +6,10 @@
             font-family: consolas_;
             src: url("consolas.woff");
         }
-
+    
         body {
-            background-color: rgb(30, 30, 30);
-            background-image: url("synthwave.gif");
+            background-color: rgb(50, 50, 50);
+            background-image: url("synthwave.gif"); 
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -19,104 +19,73 @@
             position: absolute;
             top: 0%;
             left: 0%;
-            margin-top: 30px;
+            margin-top: 0px;
             margin-left: 0px;
-            width: 20%;
-            height: 90%;
-            border-radius: 0px 15px 15px 0px;
+            width: 15%;
+            height: 100%;
             background: rgba(30, 30, 30, 0.95);
             text-align: center;
             color:  rgb(212, 212, 212);
             font-family: consolas_;
-            padding: 18px;
             font-size: 200%;
-            overflow: auto;
         }
 
-        div.MenuLink {
-            margin-top: 30px;
-            width: 100%;
-            height: 40px;
-            border-radius: 15px;
-            background: rgba(20, 20, 20, 0.95);
-            color:  rgb(112, 112, 112);
-        }
-
-        div.PageInfo {
+        #Slider {
             position: absolute;
-            top: 0%;
-            left: 0%;
-            margin-top: 30px;
-            margin-left: 30%;
-            width: 60%;
-            height: 90%;
-            border-radius: 15px;
-            background: rgba(30, 30, 30, 0.95);
-            padding: 20px;
-            overflow: auto;
+            background: rgb(25, 25, 25);
+            width: 10%;
+            height: 30px;
+            top: 135px; 
+            left: 0px;
         }
 
-        div.InfoBox {
-            margin-top: 30px;
-            padding: 1%;
-            width: 98%;
-            border-radius: 15px;
-            background: rgba(20, 20, 20, 0.95);
-            color:  rgb(112, 112, 112);
-            font-family: consolas_;
-            white-space: pre-line;
+        #Highlight {
+            position: absolute;
+            background: rgb(35, 35, 35);
+            width: 100%;
+            height: 60px;
+            top: 120px; 
+            left: 0px;
+        }
+
+        div.Option {
+            position: absolute;
+            z-index: 5;
+            width: 100%;
+            height: 60px;
+            color: rgb(112, 112, 112);
+            left: 0px;
         }
 
     </style>
-
-    <script type="text/javascript">
-    </script>
-
 </head>
-
 <body>
 
-    <div class="MenuBar">
-        <a href="home.html"> <img src="logo.png" width="100%"></img> </a>
+    <div class="MenuBar" onmousemove="moveSlider(event)">
+        <a href="index.html"> <img src="logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img> </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
 
-        <a href="code.html"> <div class="MenuLink">Code</div> </a>
-
-        <a href="home.html"> <div class="MenuLink">AI</div> </a>
-
-        <a href="home.html"> <div class="MenuLink">Tech</div> </a>
+        <a href="a.html"> <div class="Option" style="top: 130px">Recent</div></a>
+        <a href="b.html"> <div class="Option" style="top: 190px">Coding</div></a>
+        <a href="c.html"> <div class="Option" style="top: 250px">Physics</div></a>
+        <a href="d.html"> <div class="Option" style="top: 310px">Maths</div></a>
+        <a href="e.html"> <div class="Option" style="top: 370px">Music</div></a>
+        <a href="e.html"> <div class="Option" style="top: 430px">Other</div></a>
         
-        <a href="home.html"> <div class="MenuLink">Theories</div> </a>
-
-        <a href="home.html"> <div class="MenuLink">Music</div> </a>
-
-        <a href="home.html"> <div class="MenuLink">Smash</div> </a>
-
-        <a href="home.html"> <div class="MenuLink">Other</div> </a>
-
-        <a href="home.html"> <div class="MenuLink">About</div> </a>
-
-        <a href="home.html"> <div class="MenuLink">Discussion</div> </a>
-
-        <a href="home.html"> <div class="MenuLink">Sources</div> </a>
     </div>
 
-    <div class="PageInfo">
-        <div class="InfoBox"><h1>Welcome :)</h1>
-
-            On this website you will find:
-
-            <b>Home page</b> - how meta :/
-
-            <b>Coding projects</b> - the code and possibly a write up if I'm motivated enough
-
-            <b>AI projects</b> - these will probably be more explainations of how I got the AI to work, and of what data I trained it on
-
-            <b>Tech projects</b> - projects that I am working on which result in a physical product at the end (never for sale...)
-
-            probably all of the above is a lie, copied code from an old website...
-        </div>
-    </div>
-
+    <script>
+        var Slider    = document.getElementById("Slider");
+        var Highlight = document.getElementById("Highlight");
+        
+        function moveSlider(event) {
+            var y = event.clientY;
+            Slider.style.top    = Math.max(120, Math.min(y, 920))                     + 'px';
+            Highlight.style.top = Math.max(120, Math.min(60 * Math.floor(y/60), 900)) + 'px';
+        }
+        
+    </script>
 </body>
 
 </html>
