@@ -48,6 +48,10 @@
             left: 0px;
         }
 
+        #text {
+            margin-left: 10px;
+        }
+
         div.Option {
             position: absolute;
             z-index: 5;
@@ -58,19 +62,57 @@
             left: 0px;
         }
 
-        div.PageInfo {
+        #PageInfo {
             position: absolute;
             top: 0%;
             left: 20%;
             margin-top: 0px;
             margin-left: 0px;
-            width: 80%;
+            width: 65%;
             height: 100%;
             background: rgba(30, 30, 30, 0.95);
-            text-align: center;
             color:  rgb(212, 212, 212);
             font-family: consolas_;
-            font-size: 200%;
+            overflow: auto;
+        }
+        #PageInfo::-webkit-scrollbar {
+            display: none;
+        }
+
+        div.InfoBox {
+            margin-top: 30px;
+            padding: 1%;
+            margin-left: 3%;
+            width: 95%;
+            border-radius: 15px 0px 0px 15px;
+            background: rgba(20, 20, 20, 0.95);
+            color:  rgb(112, 112, 112);
+        }
+
+        #Contents {
+            position: absolute;
+            top: 0%;
+            left: 85%;
+            margin-top: 0px;
+            width: 15%;
+            height: 100%;
+            background: rgba(20, 20, 20, 0.95);
+            color:  rgb(112, 112, 112);
+            font-family: consolas_;
+            
+        }
+
+        div.Chapter {
+            z-index: 5;
+            width: 95%;
+            height: 20px;
+            margin-bottom: 10px;
+            color: rgb(112, 112, 112);
+            margin-left: 5%;
+            overflow: hidden;
+        }
+        div.Chapter:hover {
+            color: rgb(255, 102, 0);
         }
 
     </style>
@@ -92,9 +134,23 @@
         <a href="https://github.com/xandprojects/xandprojects.github.io"> <div class="Option" style="top: 550px">GitHub</div></a>
         
     </div>
-    <div class="PageInfo">
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+
+            <h1>Welcome!</h1><br>
+            <p1>Hey! This text will stay here until I can come up with a suitable welcome message :)</p1>
+
+        </div>
+
+        <div class="InfoBox"><h1>About the creator:</h1>
+
+        </div>
 
     </div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to scroll to chapter:<br><wbr></p1> </div>
 
     <script>
         var Slider    = document.getElementById("Slider");
@@ -113,6 +169,17 @@
             Highlight.style.visibility = "hidden";
         }
         
+        var Headers = document.getElementById("PageInfo"); 
+        var Contents = document.getElementById("Contents");  
+        var Chapters   = Headers.children
+            
+        for (i=0; i < Chapters.length; i++) {
+            var div = document.createElement('div');
+            div.innerHTML = i+1 + ' - ' + Chapters[i].querySelectorAll("h1")[0].textContent;
+            div.className = "Chapter";
+            div.onclick   = function (){Headers.scrollTop = Chapters[Array.prototype.indexOf.call(Contents.children, this)-2].offsetTop};
+            Contents.appendChild(div);
+        }
     </script>
 </body>
 
