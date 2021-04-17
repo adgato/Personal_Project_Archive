@@ -35,7 +35,7 @@
             background: rgb(25, 25, 25);
             width: 10%;
             height: 30px;
-            top: 135px; 
+            top: 120px; 
             left: 0px;
         }
 
@@ -57,22 +57,43 @@
             left: 0px;
         }
 
+        div.PageInfo {
+            position: absolute;
+            top: 0%;
+            left: 20%;
+            margin-top: 0px;
+            margin-left: 0px;
+            width: 80%;
+            height: 100%;
+            background: rgba(30, 30, 30, 0.95);
+            text-align: center;
+            color:  rgb(212, 212, 212);
+            font-family: consolas_;
+            font-size: 200%;
+        }
+
     </style>
 </head>
-<body>
+<body onload="hideSlider()">
 
-    <div class="MenuBar" onmousemove="moveSlider(event)">
+    <div class="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
         <a href="index.html"> <img src="logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img> </a>
         <div id="Highlight"></div>
         <div id="Slider"></div>
 
         <a href="a.html"> <div class="Option" style="top: 130px">Recent</div></a>
-        <a href="b.html"> <div class="Option" style="top: 190px">Coding</div></a>
+        <a href="b.html"> <div class="Option" style="top: 190px">AI</div></a>
         <a href="c.html"> <div class="Option" style="top: 250px">Physics</div></a>
         <a href="d.html"> <div class="Option" style="top: 310px">Maths</div></a>
         <a href="e.html"> <div class="Option" style="top: 370px">Music</div></a>
-        <a href="e.html"> <div class="Option" style="top: 430px">Other</div></a>
+        <a href="f.html"> <div class="Option" style="top: 430px">Bots</div></a>
+        <a href="g.html"> <div class="Option" style="top: 490px">Other</div></a>
+        <a href="https://github.com/xandprojects/xandprojects.github.io"> <div class="Option" style="top: 550px">GitHub</div></a>
         
+    </div>
+    <div class="PageInfo">
+
+
     </div>
 
     <script>
@@ -80,9 +101,16 @@
         var Highlight = document.getElementById("Highlight");
         
         function moveSlider(event) {
+            Slider.style.visibility    = "visible";
+            Highlight.style.visibility = "visible";
             var y = event.clientY;
-            Slider.style.top    = Math.max(120, Math.min(y, 920))                     + 'px';
-            Highlight.style.top = Math.max(120, Math.min(60 * Math.floor(y/60), 900)) + 'px';
+            Slider.style.top    = Math.max(120, Math.min(y, 570))                     + 'px';
+            Highlight.style.top = Math.max(120, Math.min(60 * Math.floor(y/60), 540)) + 'px';
+        }
+
+        function hideSlider() {
+            Slider.style.visibility    = "hidden";
+            Highlight.style.visibility = "hidden";
         }
         
     </script>
