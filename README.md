@@ -32,7 +32,7 @@ I enjoy philosophy (a new interest for me); and most things nintendo c:
 
 # Find me:
 
-- [Email](xandprojects@gmail.com)
+- [Email](mailto:xandprojects@gmail.com)
 - [Discord](https://discord.com/users/652879574132326400)
 - [Youtube](https://www.youtube.com/channel/UC-NFraumiOjcGwEOC9Y7g4g)
 - [Instagram](https://www.instagram.com/___adam____________________/)
