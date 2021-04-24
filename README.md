@@ -29,3 +29,10 @@ I don't really understand why but I have a passion for these subjects which I've
 Primarily, I am fascinated by AI, automation, and physics of the very big (cosmology) and very small (quantum). Well, at least at the moment... 
 I also enjoy: listening to music (lo-fi, synthwave, jazz and everything between), analysing music, playing piano, and composing (I regret not doing it for GCSE...); 
 I enjoy philosophy (a new interest for me); and most things nintendo c:
+
+# Find me:
+
+- [Email]mailto:xandprojects@gmail.com
+- [Discord](https://discord.com/users/652879574132326400)
+- [Youtube](https://www.youtube.com/channel/UC-NFraumiOjcGwEOC9Y7g4g)
+- [Instagram](https://www.instagram.com/___adam____________________/)
