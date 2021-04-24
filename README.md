@@ -21,7 +21,8 @@ Just don't correct my bad speling... :(
 
 # About the creator:
 
-Wow, you are actually interested??? Well, if you don't know me already, my name is Adam (aka xand because I am *very* good at coming up with nicknames...)
+Wow, you are actually interested??? 
+Well, if you don't know me already, my name is Adam (aka xand because I am *very* good at coming up with nicknames...).
 Anyway, I am a Briton studying maths, physics and computer science (if you couldn't already tell). 
 I don't really understand why but I have a passion for these subjects which I've found is helpful when it comes to studying them, so for that I am grateful :)
 
