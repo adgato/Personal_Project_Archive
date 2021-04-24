@@ -15,7 +15,7 @@ You can browse my projects using the menu to the left and return back to here by
 # Issues:
 
 I know the background gif can take a while to load... might I suggest patience?
-Although I will be checking to be certain there are no bugs with the website - I am certain there will be ._. Feel free to send any you come across to my email. 
+Although I will be checking to be certain there are no bugs with the website - I am certain there will be ._. Feel free to send any you come across to my [email](mailto:xandprojects@gmail.com).
 
 Also any feedback regarding the website in general would be much appreciated :D 
 Just don't correct my bad speling... :(
