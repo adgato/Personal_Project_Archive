@@ -3,290 +3,371 @@
 <head>
     <link rel="icon" type="image/x-icon" href="include/favicon.ico" />
     <style>
-        @font-face {
-            font-family: consolas_;
-            src: url("include/consolas.woff");
-        } @font-face {
-            font-family: hurme_;
-            src: url("include/hurme.woff");
-        }
-    
-        body {
-            background-color: rgb(50, 50, 50);
-            background-image: url("include/synthwave.gif"); 
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            overflow-x: hidden;
-        }
+    @font-face {
+        font-family: consolas_;
+        src: url("include/consolas.woff");
+    } @font-face {
+        font-family: hurme_;
+        src: url("include/hurme.woff");
+    }
 
-        a img:last-child {
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s 0.2s, opacity 0.2s linear;
-        }
-        a:hover img:last-child {
-            visibility: visible;
-            opacity: 1;
-            transition: opacity 0.2s linear;
-        }
-        a img:first-child {
-            transition: visibility 0.2s 0s;
-            opacity: 1;
-            transition: opacity 0.2s linear;
-        }
-        a:hover img:first-child {
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s 0.2s, opacity 0.2s linear;
-        }
+    :root { --theme: rgb(200, 0, 0); }
 
-        #MenuBar {
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            margin-top: 0px;
-            margin-left: 0px;
-            width: 15%;
-            height: 100%;
-            background: rgba(30, 30, 30, 0.95);
-            text-align: center;
-            color:  rgb(212, 212, 212);
-            font-family: consolas_;
-            font-size: 200%;
-            overflow: auto;
-        } #MenuBar::-webkit-scrollbar { 
-            display: none; 
-        }
+    body {
+        background-color: rgb(0, 0, 0); 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        overflow: hidden;
+    }
+        
+    a img:last-child {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 0.1s, opacity 0.1s linear;
+    } a:hover img:last-child {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.1s linear;
+    } a img:first-child {
+        transition: visibility 0.1s 0s;
+        opacity: 1;
+        transition: opacity 0.1s linear;
+    } a:hover img:first-child {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 0.1s, opacity 0.1s linear;
+    }
 
-        #Slider {
-            position: absolute;
-            background: rgb(25, 25, 25);
-            width: 10%;
-            height: 30px;
-            top: 120px; 
-            left: 0px;
-        }
+    #MenuBar {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        margin-top: 0px;
+        margin-left: 0px;
+        width: 15%;
+        height: 100%;
+        overflow: auto;
+        background: rgba(30, 30, 30, 0.95);
+    } #MenuBar::-webkit-scrollbar { 
+        display: none; 
+    }
 
-        #Highlight {
-            position: absolute;
-            background: rgb(35, 35, 35);
-            width: 100%;
-            height: 60px;
-            top: 120px; 
-            left: 0px;
-            transition: top 0.1s;
-        }
+    div.Option {
+        position: absolute;
+        z-index: 5;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-family: consolas_;
+        font-size: 200%;
+        color: rgb(112, 112, 112);
+        left: 0px;
+        user-select: none;
+    } div.Option:hover { 
+        color: var(--theme); 
+        cursor: pointer;
+    }
 
-        #text { margin-left: 10px; }
+    #Slider {
+        position: absolute;
+        background: rgb(25, 25, 25);
+        width: 10%;
+        height: 30px;
+        top: 120px; 
+        left: 0px;
+    }
+    #Highlight {
+        position: absolute;
+        background: rgb(35, 35, 35);
+        width: 100%;
+        height: 60px;
+        top: 120px; 
+        left: 0px;
+        transition: top 0.1s;
+    }
 
-        div.Option {
-            position: absolute;
-            z-index: 5;
-            width: 100%;
-            height: 50px;
-            margin-bottom: 10px;
-            color: rgb(112, 112, 112);
-            left: 0px;
-        } div.Option:hover { 
-            color: rgb(255, 102, 0); 
-        }
+    #PageInfo {
+        display: grid;
+        position: absolute;
+        top: 0%;
+        left: 15%;
+        width: 85%;
+        height: 100%;
+        color:  rgb(212, 212, 212);
+        font-family: hurme_;
+        overflow: auto;
+        overflow-x: hidden;
+        transition: width 0.3s ease-in-out;
+    } 
+    #PageInfo::-webkit-scrollbar { width: 10px; } 
+    #PageInfo::-webkit-scrollbar-track { background: rgb(30, 30, 30); } 
+    #PageInfo::-webkit-scrollbar-thumb { background: rgb(112, 112, 112); }
+    #PageInfo::-webkit-scrollbar-thumb:hover { background: var(--theme); }
 
-        #PageInfo {
-            position: absolute;
-            top: 0%;
-            left: 20%;
-            width: 65%;
-            height: 100%;
-            color:  rgb(212, 212, 212);
-            font-family: hurme_;
-            overflow: auto;
-            transition: width 0.3s ease-in-out;
-        } #PageInfo::-webkit-scrollbar { 
-            display: none; 
-        }
+    div.InfoBox {
+        margin-top: 30px;
+        padding: 1%;
+        padding-bottom: 30px;
+        margin-left: 8%;
+        width: 95%;
+        border-radius: 15px 0px 0px 15px;
+        background: rgba(20, 20, 20, 0.97);
+        color:  rgb(112, 112, 112);
+    }
 
-        #HideContents {
-            position: sticky;
-            top: 0%;
-            left: 98%;
-            width: 2%;
-            height: 1v;
-            background: rgb(30, 30, 30);
-            font-size: 2vw;
-            text-align: center;
-        } #HideContents:hover { 
-            color: rgb(255, 102, 0); 
-            cursor: pointer;
-        }
+    #text  { margin-left: 10px; }
+    #image {
+        max-width: 750px;
+        max-height: 750px;
+        border: 5px solid rgb(15, 15, 15); 
+    } #image:hover {
+        border: 5px solid var(--theme);
+        cursor: pointer;
+    }
+    #pdf {
+        width: 80%;
+        height: 0px; 
+    }
+    #copy:hover span    { display: none; }
+    #copy:hover:before  { content: "Copy path to clipboard"; }
+    #copy:active:before {  color: rgb(0, 100, 200); }
 
-        div.InfoBox {
-            margin-top: 30px;
-            padding: 1%;
-            padding-bottom: 30px;
-            margin-left: 3%;
-            width: 95%;
-            border-radius: 15px 0px 0px 15px;
-            background: rgba(20, 20, 20, 0.99);
-            color:  rgb(112, 112, 112);
-        }
+    #HideContents {
+        position: absolute;
+        top: 0%;
+        left: 98%;
+        width: 2%;
+        height: 1v;
+        background: rgb(30, 30, 30);
+        font-size: 2vw;
+        text-align: center;
+        font-family: consolas_;
+        font-size: 200%;
+        transition: left 0.3s ease-in-out;
+    } #HideContents:hover { 
+        color: var(--theme); 
+        cursor: pointer;
+    }
 
-        #Contents {
-            position: absolute;
-            top: 0%;
-            left: 85%;
-            margin-top: 0px;
-            width: 15%;
-            height: 100%;
-            background: rgba(20, 20, 20, 0.95);
-            color:  rgb(112, 112, 112);
-            font-family: consolas_;
-            font-size: 0.9vw;
-            transition: left 0.3s ease-in-out;
-        }
+    #Contents {
+        position: absolute;
+        top: 0%;
+        left: 100%;
+        width: 15%;
+        height: 100%;
+        background: rgba(20, 20, 20, 0.95);
+        color:  rgb(112, 112, 112);
+        font-family: consolas_;
+        font-size: 0.9vw;
+        transition: left 0.3s ease-in-out;
+    }
 
-        div.Chapter {
-            margin-bottom: 15px;
-            color: rgb(112, 112, 112);
-            margin-left: 5%;
-        } div.Chapter:hover  { 
-            color: rgb(255, 102, 0); 
-            cursor: pointer;
-        } div.Chapter:before { 
-            content:"• "; 
-        }
+    div.Chapter {
+        margin-bottom: 15px;
+        margin-left: 5%;
+        color: rgb(112, 112, 112);
+        user-select: none;
+    } div.Chapter:hover  { 
+        color: var(--theme);  
+        cursor: pointer;
+    } div.Chapter:before { 
+        content:"• "; 
+    }
 
-        a:link {
-            color: rgb(0, 102, 255);
-        } a:hover { color: rgb(255, 102, 0); }
-
+    a {
+        color: rgb(0, 100, 200);
+        user-select: none;
+    } a:hover { 
+        color: var(--theme);
+        cursor: pointer;
+    }
     </style>
 </head>
 <body onload="hideSlider()">
 
-    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
-        <a href="index.html"> 
-            <img id="logo" src="include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
-            <img id="logohover" src="include/logohover.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
-        </a>
-        <div id="Highlight"></div>
-        <div id="Slider"></div>
+<canvas id="canv" position="absolute"></canvas>
 
-        <a href="a.html"> <div class="Option">Recent</div></a>
-        <a href="b.html"> <div class="Option">AI</div></a>
-        <a href="c.html"> <div class="Option">Physics</div></a>
-        <a href="d.html"> <div class="Option">Maths</div></a>
-        <a href="e.html"> <div class="Option">Music</div></a>
-        <a href="f.html"> <div class="Option">Bots</div></a>
-        <a href="g.html"> <div class="Option">Other</div></a>
-        <a href="https://github.com/xandprojects/xandprojects.github.io"> <div class="Option">GitHub</div></a>
-        
+<div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+    <a href="index.html"> 
+        <img id="logo" src="include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+        <img id="logohover" src="include/logohover.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+    </a>
+    <div id="Highlight"></div>
+    <div id="Slider"></div>
+
+    <a href="a.html"> <div class="Option">Recent</div></a>
+    <a href="b.html"> <div class="Option">AI</div></a>
+    <a href="c.html"> <div class="Option">Physics</div></a>
+    <a href="d.html"> <div class="Option">Maths</div></a>
+    <a href="e.html"> <div class="Option">Music</div></a>
+    <a href="f.html"> <div class="Option">Bots</div></a>
+    <a href="g.html"> <div class="Option">Other</div></a>
+    <a href="https://github.com/xandprojects/xandprojects.github.io"> <div class="Option">GitHub</div></a>
+    
+</div>
+
+<div id="PageInfo">
+
+    <div class="InfoBox">
+        <h1>Welcome!</h1>
+        <p1>Hey, welcome to my website!<br>Here I intent to be posting any projects that I feel like sharing.<br><br>Some projects I have uploaded I will have done years ago but decided to make write-ups 
+            for and included on this website.<br>If you are friend of mine you will know these will most likely all be coding projects, with a twist here and there, and if you're not then you know now :D
+        </p1>
+    </div>
+    <div class="InfoBox">
+        <h1>How to use this awesome website:</h1>
+        <p1>Most of it should be fairly straight forward, you can either scroll through the content in the middle of your screen yourself, or there is a "contents" bar to the right you can use instead.
+            <br>If you wish, you can hide this contents bar by clicking the arrow above.
+            <br>Note: the contents bar may be small, especially for mobile users, but honestly I don't want it taking up anymore of the screen, it's not that important c:
+            <br><br>You can browse my projects using the menu to the left and return back to here by clicking the logo.
+        </p1>
+    </div>
+    <div class="InfoBox">
+        <h1>Issues:</h1>
+        <p1>I know the background gif can take a while to load... might I suggest patience?
+            <br>Although I will be checking to be certain there are no bugs with the website - I am certain there will be ._. Feel free to send any you come across to my 
+            <a href="mailto:xandprojects@gmail.com">email</a>. Also any feedback regarding the website in general would be much appreciated :D 
+            <br>Just don't correct my bad speling... :(
+        </p1>
+    </div>
+    <div class="InfoBox">
+        <h1>About the creator:</h1>
+        <p1>Wow, you are actually interested??? Well, if you don't know me already, my name is Adam (aka xand because I am <i>very</i> good at coming up with nicknames...)
+            <br>Anyway, I am a Briton studying maths, physics and computer science (if you couldn't already tell). I don't really understand why but I have a passion for these subjects which I've found is 
+            helpful when it comes to studying them, so for that I am grateful :)
+            <br><br>Primarily, I am fascinated by AI, automation, and physics of the very big (cosmology) and very small (quantum). Well, at least at the moment... 
+            <br><br>I also enjoy: listening to music (lo-fi, synthwave, jazz and everything between), analysing music, playing piano, and composing (I regret not doing it for GCSE...); 
+            I enjoy philosophy (a new interest for me); and most things nintendo c:
+        </p1>
+    </div>
+    <div class="InfoBox">
+        <h1>Find me:</h1>
+        <p1>
+                - <a href="mailto:xandprojects@gmail.com">Email</a>
+            <br>- <a href="https://discord.com/users/652879574132326400">Discord</a>
+            <br>- <a href="https://www.youtube.com/channel/UC-NFraumiOjcGwEOC9Y7g4g">Youtube</a>
+            <br>- <a href="https://www.instagram.com/___adam____________________/">Instagram</a>
+        </p1>
     </div>
 
-    <div id="PageInfo">
+</div>
 
-        <div id="HideContents" onclick="toggleContents()">&gt;</div>
+<div id="HideContents" onclick="toggleContents()">&lt;</div>
 
-        <div class="InfoBox">
-            <h1>Welcome!</h1>
-            <p1>Hey, welcome to my website!<br>Here I intent to be posting any projects that I feel like sharing.<br><br>Some projects I have uploaded I will have done years ago but decided to make write-ups 
-                for and included on this website.<br>If you are friend of mine you will know these will most likely all be coding projects, with a twist here and there, and if you're not then you know now :D
-            </p1>
-        </div>
-        <div class="InfoBox">
-            <h1>How to use this awesome website:</h1>
-            <p1>Most of it should be fairly straight forward, you can either scroll through the content in the middle of your screen yourself, or there is a "contents" bar to the right you can use instead.
-                <br>If you wish, you can hide this contents bar by clicking the arrow above.
-                <br>Note: the contents bar may be small, especially for mobile users, but honestly I don't want it taking up anymore of the screen, it's not that important c:
-                <br><br>You can browse my projects using the menu to the left and return back to here by clicking the logo.
-            </p1>
-        </div>
-        <div class="InfoBox">
-            <h1>Issues:</h1>
-            <p1>I know the background gif can take a while to load... might I suggest patience?
-                <br>Although I will be checking to be certain there are no bugs with the website - I am certain there will be ._. Feel free to send any you come across to my 
-                <a href="mailto:xandprojects@gmail.com">email</a>. Also any feedback regarding the website in general would be much appreciated :D 
-                <br>Just don't correct my bad speling... :(
-            </p1>
-        </div>
-        <div class="InfoBox">
-            <h1>About the creator:</h1>
-            <p1>Wow, you are actually interested??? Well, if you don't know me already, my name is Adam (aka xand because I am <i>very</i> good at coming up with nicknames...)
-                <br>Anyway, I am a Briton studying maths, physics and computer science (if you couldn't already tell). I don't really understand why but I have a passion for these subjects which I've found is 
-                helpful when it comes to studying them, so for that I am grateful :)
-                <br><br>Primarily, I am fascinated by AI, automation, and physics of the very big (cosmology) and very small (quantum). Well, at least at the moment... 
-                <br><br>I also enjoy: listening to music (lo-fi, synthwave, jazz and everything between), analysing music, playing piano, and composing (I regret not doing it for GCSE...); 
-                I enjoy philosophy (a new interest for me); and most things nintendo c:
-            </p1>
-        </div>
-        <div class="InfoBox">
-            <h1>Find me:</h1>
-            <p1>
-                    - <a href="mailto:xandprojects@gmail.com">Email</a>
-                <br>- <a href="https://discord.com/users/652879574132326400">Discord</a>
-                <br>- <a href="https://www.youtube.com/channel/UC-NFraumiOjcGwEOC9Y7g4g">Youtube</a>
-                <br>- <a href="https://www.instagram.com/___adam____________________/">Instagram</a>
-            </p1>
-        </div>
+<div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to scroll to chapter:<br><wbr></p1> </div>
 
-    </div>
+<script>
+    var Slider     = document.getElementById("Slider");
+    var Highlight  = document.getElementById("Highlight");
+    var MenuScroll = document.getElementById("MenuBar");
+    var Headers    = document.getElementById("PageInfo");
+    var Contents   = document.getElementById("Contents"); 
+    var Toggle     = document.getElementById("HideContents");  
+    var Chapters   = Headers.children;
+    
+    function moveSlider(event) {
+        var y = event.clientY;
+        var preSlider = Slider.style.top;
+        Slider.style.top    = Math.min(MenuScroll.scrollTop + Math.max(120 - MenuScroll.scrollTop, Math.min(y, topp+20)), MenuScroll.scrollTop + 940) + 'px';
+        Highlight.style.top = 60 * Math.floor( parseInt(Slider.style.top) / 60 )  + 'px';
+        if (y-60 < parseInt(Slider.style.top) && parseInt(Slider.style.top) < y+30) {
+            Slider.style.visibility    = "visible";
+            Highlight.style.visibility = "visible";
+        } 
+        else hideSlider();
+    }
 
-    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to scroll to chapter:<br><wbr></p1> </div>
+    function hideSlider() {
+        Slider.style.visibility    = "hidden";
+        Highlight.style.visibility = "hidden";
+    }
 
-    <script>
-        var Slider     = document.getElementById("Slider");
-        var Highlight  = document.getElementById("Highlight");
-        var MenuScroll = document.getElementById("MenuBar");
-        var Headers    = document.getElementById("PageInfo");
-        var Contents   = document.getElementById("Contents"); 
-        var Toggle     = document.getElementById("HideContents");  
-        var Chapters   = Headers.children;
+    function toggleContents() {
+        if (Toggle.textContent == ">") {
+            Toggle.textContent  = "<";
+            Toggle.style.left   = "98%";
+            Headers.style.width = "85%";
+            Contents.style.left = "100%";
+        } else {
+            Toggle.textContent = ">";
+            Toggle.style.left   = "83%";
+            Headers.style.width = "70%";
+            Contents.style.left = "85%";
+        }
+    }
+
+    function togglePDF(index) {
+        if (Headers.children[index].children[3].textContent == "Open below") {
+            Headers.children[index].children['pdf'].style.transition = "0s";
+            Headers.children[index].children[3].textContent          = "Close below";
+            Headers.children[index].children['pdf'].style.height     = window.innerHeight - 30 + 'px';
+            Headers.scrollTop                                        = Headers.children[index].children['pdf'].offsetTop - 20;
+        } else {
+            Headers.children[index].children['pdf'].style.transition = "0.75s";
+            Headers.children[index].children['pdf'].style.height     = '0px';
+            Headers.children[index].children[3].textContent          = "Open below";
+        }
+    }
+    
+    for (i=0; i < Chapters.length; i++) {
+        var div = document.createElement('div');
+        div.innerHTML = Chapters[i].querySelectorAll("h1")[0].textContent;
+        div.className = "Chapter";
+        div.onclick   = function (){Headers.scrollTop = Chapters[Array.prototype.indexOf.call(Contents.children, this)-1].offsetTop - 30};
+        Contents.appendChild(div);
+    }
+
+    var Options = MenuScroll.children;
+    var topp = 70;
+    for (i=3; i < Options.length; i++) {
+        topp += 60;
+        Options[i].children[0].style.top = topp + "px";
+    }
+
+    const sq_size = 160;
+    const canvas = document.getElementById('canv');
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = window.innerWidth;
+    const h = canvas.height = window.innerHeight;
+    const theme = getComputedStyle(document.querySelector(':root')).getPropertyValue('--theme');
+    const colours = [theme.slice(0,4) + 'a' + theme.slice(4, -1) + ', 0.1)', theme.slice(0,4) + 'a' + theme.slice(4, -1) + ', 0.5)'];
+    var indexA = 0;
+    var indexB = 0;
+    ctx.fillStyle = '#000';
+
+
+    function slidingGrids () {
         
-        function moveSlider(event) {
-            var y = event.clientY;
-            var preSlider = Slider.style.top;
-            Slider.style.top    = Math.min(MenuScroll.scrollTop + Math.max(120 - MenuScroll.scrollTop, Math.min(y, topp+20)), MenuScroll.scrollTop + 940) + 'px';
-            Highlight.style.top = 60 * Math.floor( parseInt(Slider.style.top) / 60 )  + 'px';
-            if (y-60 < parseInt(Slider.style.top) && parseInt(Slider.style.top) < y+30) {
-                Slider.style.visibility    = "visible";
-                Highlight.style.visibility = "visible";
-            } 
-            else { hideSlider(); }
-        }
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, w, h);
+        
+        for (i=0; i < 2; i++) {
+            ctx.beginPath();
 
-        function hideSlider() {
-            Slider.style.visibility    = "hidden";
-            Highlight.style.visibility = "hidden";
-        }
+            ctx.strokeStyle = colours[i];
+            const init = [sq_size - indexA, indexB][i];
 
-        function toggleContents() {
-            if (Toggle.textContent == ">") {
-                Toggle.textContent  = "<";
-                Headers.style.width = "80%";
-                Contents.style.left = "100%";
-            } else {
-                Toggle.textContent = ">";
-                Headers.style.width = "65%";
-                Contents.style.left = "85%";
+            for (x=init; x < w; x+=sq_size) {
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, h);
+                ctx.stroke();
+            } for (y=init; y < h; y+=sq_size) {
+                ctx.moveTo(0, y);
+                ctx.lineTo(w, y);
+                ctx.stroke();
             }
-        }
-        
-        for (i=1; i < Chapters.length; i++) {
-            var div = document.createElement('div');
-            div.innerHTML = Chapters[i].querySelectorAll("h1")[0].textContent;
-            div.className = "Chapter";
-            div.onclick   = function (){Headers.scrollTop = Chapters[Array.prototype.indexOf.call(Contents.children, this)-1].offsetTop - 30};
-            Contents.appendChild(div);
-        }
 
-        var Options = MenuScroll.children;
-        var topp = 70;
-        for (i=3; i < Options.length; i++) {
-            topp += 60;
-            Options[i].children[0].style.top = topp + "px";
         }
+        indexA = (indexA + 3) % sq_size;
+        indexB = (indexB + 4) % sq_size;
 
-    </script>
+    }
+
+    setInterval(slidingGrids, 1000/20);
+
+</script>
 </body>
 
 </html>
