@@ -78,9 +78,7 @@
             transition: top 0.1s;
         }
 
-        #text {
-            margin-left: 10px;
-        }
+        #text { margin-left: 10px; }
 
         div.Option {
             position: absolute;
@@ -281,11 +279,11 @@
             Contents.appendChild(div);
         }
 
-        var Options = document.getElementById("MenuBar").children
-        var topp = 70
+        var Options = MenuScroll.children;
+        var topp = 70;
         for (i=3; i < Options.length; i++) {
-            topp += 60
-            Options[i].children[0].style.top = topp + "px"
+            topp += 60;
+            Options[i].children[0].style.top = topp + "px";
         }
 
     </script>
