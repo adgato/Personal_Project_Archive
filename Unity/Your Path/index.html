@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <style>
+    @font-face {
+        font-family: consolas_;
+        src: url("/include/consolas.woff");
+    } @font-face {
+        font-family: hurme_;
+        src: url("/include/quicksand.woff");
+    }
+
+    :root { --theme: rgb(0, 50, 255); }
+
+    body {
+        background-color: rgb(0, 0, 0); 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        overflow: hidden;
+    }
+        
+    a img:last-child {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 0.1s, opacity 0.1s linear;
+    } a:hover img:last-child {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.1s linear;
+    } a img:first-child {
+        transition: visibility 0.1s 0s;
+        opacity: 1;
+        transition: opacity 0.1s linear;
+    } a:hover img:first-child {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 0.1s, opacity 0.1s linear;
+    }
+
+    #MenuBar {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        margin-top: 0px;
+        margin-left: 0px;
+        width: 15%;
+        height: 100%;
+        overflow: auto;
+        background: rgba(30, 30, 30, 0.95);
+    } #MenuBar::-webkit-scrollbar { 
+        display: none; 
+    }
+
+    div.Option {
+        position: absolute;
+        z-index: 5;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 10px;
+        text-align: center;
+        font-family: consolas_;
+        font-size: 200%;
+        color: rgb(112, 112, 112);
+        left: 0px;
+        user-select: none;
+    } div.Option:hover { 
+        color: var(--theme); 
+        cursor: pointer;
+    }
+
+    #Slider {
+        position: absolute;
+        background: rgb(25, 25, 25);
+        width: 10%;
+        height: 30px;
+        top: 120px; 
+        left: 0px;
+    }
+    #Highlight {
+        position: absolute;
+        background: rgb(35, 35, 35);
+        width: 100%;
+        height: 60px;
+        top: 120px; 
+        left: 0px;
+        transition: top 0.1s;
+    }
+
+    #PageInfo {
+        display: grid;
+        position: absolute;
+        top: 0%;
+        left: 15%;
+        width: 85%;
+        height: 100%;
+        color:  rgb(212, 212, 212);
+        font-family: hurme_;
+        overflow: auto;
+        transition: width 0.3s ease-in-out;
+    } 
+    #PageInfo::-webkit-scrollbar { width: 10px; } 
+    #PageInfo::-webkit-scrollbar-track { background: rgb(30, 30, 30); } 
+    #PageInfo::-webkit-scrollbar-thumb { background: rgb(112, 112, 112); }
+    #PageInfo::-webkit-scrollbar-thumb:hover { background: var(--theme); }
+
+    div.InfoBox {
+        margin-top: 30px;
+        padding: 1%;
+        padding-bottom: 30px;
+        margin-left: 8%;
+        width: 90%;
+        border-radius: 15px 0px 0px 15px;
+        background: rgba(20, 20, 20, 0.95);
+        color:  rgb(112, 112, 112);
+    }
+
+    #text  { margin-left: 10px; }
+    #image {
+        max-width: 750px;
+        max-height: 750px;
+        border: 5px solid rgb(15, 15, 15); 
+    } #image:hover {
+        border: 5px solid var(--theme);
+        cursor: pointer;
+    }
+    #pdf {
+        width: 80%;
+        height: 0px; 
+    }
+    #copy:hover span    { display: none; }
+    #copy:hover:before  { content: "Copy path to clipboard"; }
+    #copy:active:before {  color: rgb(0, 100, 200); }
+
+    #HideContents {
+        position: absolute;
+        top: 0%;
+        left: 98%;
+        width: 2%;
+        height: 1v;
+        background: rgb(30, 30, 30);
+        font-size: 2vw;
+        text-align: center;
+        font-family: consolas_;
+        font-size: 200%;
+        transition: left 0.3s ease-in-out;
+    } #HideContents:hover { 
+        color: var(--theme); 
+        cursor: pointer;
+    }
+
+    #Contents {
+        position: absolute;
+        top: 0%;
+        left: 100%;
+        width: 15%;
+        height: 100%;
+        background: rgba(20, 20, 20, 0.95);
+        color:  rgb(112, 112, 112);
+        font-family: consolas_;
+        font-size: 0.9vw;
+        transition: left 0.3s ease-in-out;
+    }
+
+    div.Chapter {
+        margin-bottom: 15px;
+        margin-left: 5%;
+        color: rgb(112, 112, 112);
+        user-select: none;
+    } div.Chapter:hover  { 
+        color: var(--theme);  
+        cursor: pointer;
+    } div.Chapter:before { 
+        content:"• "; 
+    }
+
+    a {
+        color: rgb(0, 100, 200);
+        user-select: none;
+    } a:hover { 
+        color: var(--theme);
+        cursor: pointer;
+    }
+    </style>
+<script src="Build/UnityLoader.js"></script>
+</head>
+<body onload="hideSlider()">
+
+<canvas id="canv" position="absolute"></canvas>
+
+<div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+    <a href="/index"> 
+        <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+        <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+    </a>
+    <div id="Highlight"></div>
+    <div id="Slider"></div>
+
+    <a href="https://github.com/xandprojects/xandprojects.github.io/tree/main/ai"> <div class="Option">GitHub</div></a>
+    <a href="recent"> <div class="Option">Scripts go here:</div></a>
+    
+</div>
+
+<div id="PageInfo">
+
+    <div class="InfoBox">
+        <h1>Play 'Your Path'</h1>
+        <p1> Below is an online version of 'Your Path', I find the controls a bit sensitive and this is a common issue for webGL Unity games, so I recommend running the executable version linked
+            (not here (to be done)).<br><br>
+            Click the image to start, you can make the game fullscreen by pressing the fullscreen button, and ensure you have clicked on the game once its started to lock your mouse in position :)<br>
+            Enjoy!
+        </p1>
+        <div class="webgl-content">
+            <div id="unityContainer" style="width: 1100px; height: 600px">
+              <img src="./include/thumbnail.png" onclick="unityInstance = UnityLoader.instantiate('unityContainer', './include/Build/Your Path.json'); document.getElementsByClassName('webgl-content').muted = true;" style="width: 1100px; height: 600px"></img>
+            </div>
+            <img src="./include/fullscreen.png" style="width: 38px;" onclick="unityInstance.SetFullscreen(1)"></img>
+          </div>
+    </div>
+
+</div>
+
+<div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+<div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+<script>
+    var Slider     = document.getElementById("Slider");
+    var Highlight  = document.getElementById("Highlight");
+    var MenuScroll = document.getElementById("MenuBar");
+    var Headers    = document.getElementById("PageInfo");
+    var Contents   = document.getElementById("Contents"); 
+    var Toggle     = document.getElementById("HideContents");  
+    var Chapters   = Headers.children;
+    
+    function moveSlider(event) {
+        var y = event.clientY;
+        var preSlider = Slider.style.top;
+        Slider.style.top    = Math.min(MenuScroll.scrollTop + Math.max(120 - MenuScroll.scrollTop, Math.min(y, topp+20)), MenuScroll.scrollTop + 940) + 'px';
+        Highlight.style.top = 60 * Math.floor( parseInt(Slider.style.top) / 60 )  + 'px';
+        if (y-60 < parseInt(Slider.style.top) && parseInt(Slider.style.top) < y+30) {
+            Slider.style.visibility    = "visible";
+            Highlight.style.visibility = "visible";
+        } 
+        else hideSlider();
+    }
+
+    function hideSlider() {
+        Slider.style.visibility    = "hidden";
+        Highlight.style.visibility = "hidden";
+    }
+
+    function toggleContents() {
+        if (Toggle.textContent == ">") {
+            Toggle.textContent  = "<";
+            Toggle.style.left   = "98%";
+            Headers.style.width = "85%";
+            Contents.style.left = "100%";
+        } else {
+            Toggle.textContent = ">";
+            Toggle.style.left   = "83%";
+            Headers.style.width = "70%";
+            Contents.style.left = "85%";
+        }
+    }
+
+    function togglePDF(index) {
+        if (Headers.children[index].children[3].textContent == "Open below") {
+            Headers.children[index].children['pdf'].style.transition = "0s";
+            Headers.children[index].children[3].textContent          = "Close below";
+            Headers.children[index].children['pdf'].style.height     = window.innerHeight - 30 + 'px';
+            Headers.scrollTop                                        = Headers.children[index].children['pdf'].offsetTop - 20;
+        } else {
+            Headers.children[index].children['pdf'].style.transition = "0.75s";
+            Headers.children[index].children['pdf'].style.height     = '0px';
+            Headers.children[index].children[3].textContent          = "Open below";
+        }
+    }
+
+    document.getElementById('logohover').src = '/include/' + getComputedStyle(document.querySelector(':root')).getPropertyValue('--theme').slice(1) + '.png';
+    
+    for (i=0; i < Chapters.length; i++) {
+        var div = document.createElement('div');
+        div.innerHTML = Chapters[i].querySelectorAll("h1")[0].textContent;
+        div.className = "Chapter";
+        div.onclick   = function (){Headers.scrollTop = Chapters[Array.prototype.indexOf.call(Contents.children, this)-2].offsetTop - 30};
+        Contents.appendChild(div);
+    }
+
+    var Options = MenuScroll.children;
+    var topp = 70;
+    for (i=3; i < Options.length; i++) {
+        topp += 60;
+        Options[i].children[0].style.top = topp + "px";
+    }
+
+    const sq_size = 160;
+    const canvas = document.getElementById('canv');
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = window.innerWidth;
+    const h = canvas.height = window.innerHeight;
+    const theme = getComputedStyle(document.querySelector(':root')).getPropertyValue('--theme');
+    const colours = [theme.slice(0,4) + 'a' + theme.slice(4, -1) + ', 0.1)', theme.slice(0,4) + 'a' + theme.slice(4, -1) + ', 0.5)'];
+    var indexA = 0;
+    var indexB = 0;
+    var speed  = 3;
+    ctx.fillStyle = '#000';
+
+
+    function slidingGrids () {
+        
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, w, h);
+        
+        for (i=0; i < 2; i++) {
+            ctx.beginPath();
+
+            ctx.strokeStyle = colours[i];
+            const init = [sq_size - indexA, indexB][i];
+
+            for (x=init; x < w; x+=sq_size) {
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, h);
+                ctx.stroke();
+            } for (y=init; y < h; y+=sq_size) {
+                ctx.moveTo(0, y);
+                ctx.lineTo(w, y);
+                ctx.stroke();
+            }
+
+        }
+        indexA = (indexA + speed*0.75) % sq_size;
+        indexB = (indexB + speed) % sq_size;
+
+    }
+
+    setInterval(slidingGrids, 1000/20);
+
+</script>
+</body>
+
+</html>
