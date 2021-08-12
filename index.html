@@ -154,13 +154,14 @@
         position: absolute;
         top: 0%;
         left: 100%;
+        visibility: hidden;
         width: 15%;
         height: 100%;
         background: rgba(20, 20, 20, 0.95);
         color:  rgb(112, 112, 112);
         font-family: consolas_;
         font-size: 0.9vw;
-        transition: left 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
     }
 
     div.Chapter {
@@ -291,11 +292,13 @@
             Toggle.style.left   = "98%";
             Headers.style.width = "85%";
             Contents.style.left = "100%";
+            Contents.style.visibility = "hidden";
         } else {
             Toggle.textContent = ">";
             Toggle.style.left   = "83%";
             Headers.style.width = "70%";
             Contents.style.left = "85%";
+            Contents.style.visibility = "visible";
         }
     }
 
