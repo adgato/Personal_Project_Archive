@@ -195,7 +195,7 @@
     <div id="Highlight"></div>
     <div id="Slider"></div>
 
-    <a href="https://github.com/xandprojects/xandprojects.github.io/tree/main/ai"> <div class="Option">GitHub</div></a>
+    <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
     <a href="recent"> <div class="Option">Scripts go here:</div></a>
     
 </div>
@@ -250,6 +250,10 @@
     var Contents   = document.getElementById("Contents"); 
     var Toggle     = document.getElementById("HideContents");  
     var Chapters   = Headers.children;
+
+    function getGitURL() {
+        return 'https://github.com/xandprojects/xandprojects.github.io/tree/main/' + document.location.href.split('.io/')[1];
+    }
     
     function moveSlider(event) {
         var y = event.clientY;
