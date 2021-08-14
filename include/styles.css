@@ -1,0 +1,177 @@
+@font-face {
+    font-family: consolas_;
+    src: url("/include/consolas.woff");
+} @font-face {
+    font-family: hurme_;
+    src: url("/include/quicksand.woff");
+}
+
+body {
+    background-color: rgb(0, 0, 0); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+    
+a img:last-child {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.1s, opacity 0.1s linear;
+} a:hover img:last-child {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.1s linear;
+} a img:first-child {
+    transition: visibility 0.1s 0s;
+    opacity: 1;
+    transition: opacity 0.1s linear;
+} a:hover img:first-child {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.1s, opacity 0.1s linear;
+}
+
+#MenuBar {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 15%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(30, 30, 30, 0.95);
+} #MenuBar::-webkit-scrollbar { 
+    display: none; 
+}
+
+div.Option {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: consolas_;
+    font-size: 200%;
+    color: rgb(112, 112, 112);
+    left: 0px;
+    user-select: none;
+} div.Option:hover { 
+    color: var(--theme); 
+    cursor: pointer;
+}
+
+#Slider {
+    position: absolute;
+    background: rgb(25, 25, 25);
+    width: 10%;
+    height: 30px;
+    top: 120px; 
+    left: 0px;
+}
+#Highlight {
+    position: absolute;
+    background: rgb(35, 35, 35);
+    width: 100%;
+    height: 60px;
+    top: 120px; 
+    left: 0px;
+    transition: top 0.1s;
+}
+
+#PageInfo {
+    display: grid;
+    position: absolute;
+    top: 0%;
+    left: 15%;
+    width: 85%;
+    height: 100%;
+    color:  rgb(212, 212, 212);
+    font-family: hurme_;
+    overflow: auto;
+    transition: width 0.3s ease-in-out;
+} 
+#PageInfo::-webkit-scrollbar { width: 10px; } 
+#PageInfo::-webkit-scrollbar-track { background: rgb(30, 30, 30); } 
+#PageInfo::-webkit-scrollbar-thumb { background: rgb(112, 112, 112); }
+#PageInfo::-webkit-scrollbar-thumb:hover { background: var(--theme); }
+
+div.InfoBox {
+    margin-top: 30px;
+    padding: 1%;
+    padding-bottom: 30px;
+    margin-left: 8%;
+    width: 90%;
+    border-radius: 15px 0px 0px 15px;
+    background: rgba(20, 20, 20, 0.95);
+    color:  rgb(112, 112, 112);
+}
+
+#text  { margin-left: 10px; }
+#image {
+    /**max-width: 750px;
+    max-height: 750px;**/
+    border: 5px solid rgb(15, 15, 15); 
+} #image:hover {
+    border: 5px solid var(--theme);
+    cursor: pointer;
+}
+#pdf {
+    width: 80%;
+    height: 0px; 
+}
+#copy:hover span    { display: none; }
+#copy:hover:before  { content: "Copy path to clipboard"; }
+#copy:active:before {  color: rgb(0, 100, 200); }
+
+#HideContents {
+    position: absolute;
+    top: 0%;
+    left: 98%;
+    width: 2%;
+    height: 1v;
+    background: rgb(30, 30, 30);
+    font-size: 2vw;
+    text-align: center;
+    font-family: consolas_;
+    font-size: 200%;
+    transition: left 0.3s ease-in-out;
+} #HideContents:hover { 
+    color: var(--theme); 
+    cursor: pointer;
+}
+
+#Contents {
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    width: 15%;
+    height: 100%;
+    background: rgba(20, 20, 20, 0.95);
+    color:  rgb(112, 112, 112);
+    font-family: consolas_;
+    font-size: 0.9vw;
+    transition: left 0.3s ease-in-out;
+}
+
+div.Chapter {
+    margin-bottom: 15px;
+    margin-left: 5%;
+    color: rgb(112, 112, 112);
+    user-select: none;
+} div.Chapter:hover  { 
+    color: var(--theme);  
+    cursor: pointer;
+} div.Chapter:before { 
+    content:"• "; 
+}
+
+a {
+    color: rgb(0, 100, 200);
+    user-select: none;
+} a:hover { 
+    color: var(--theme);
+    cursor: pointer;
+}
