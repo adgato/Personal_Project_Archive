@@ -232,7 +232,7 @@
         </p1>
         <div class="webgl-content">
             <div id="unityContainer" style="width: 100%;">
-              <img src="./include/thumbnail.png" onclick="unityInstance = UnityLoader.instantiate('unityContainer', './include/Build/Your Path.json'); document.getElementsByClassName('webgl-content').muted = true;" style="width: 100%;"></img>
+              <img id="image" src="./include/thumbnail.png" onclick="unityInstance = UnityLoader.instantiate('unityContainer', './include/Build/Your Path.json'); document.getElementsByClassName('webgl-content').muted = true;" style="width: 100%;"></img>
             </div>
             <img id="image" src="./include/fullscreen.png" style="width: 38px;" onclick="unityInstance.SetFullscreen(1)"></img>
           </div>
