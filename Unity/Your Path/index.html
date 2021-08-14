@@ -252,7 +252,7 @@
     var Chapters   = Headers.children;
 
     function getGitURL() {
-        return 'https://github.com/xandprojects/xandprojects.github.io/tree/main/' + document.location.href.split('.io/')[1];
+        document.location = 'https://github.com/xandprojects/xandprojects.github.io/tree/main/' + document.location.href.split('.io/')[1];
     }
     
     function moveSlider(event) {
