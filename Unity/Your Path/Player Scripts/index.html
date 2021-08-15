@@ -22,7 +22,6 @@
         <div id="Slider"></div>
 
         <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
-        <a href="recent"> <div class="Option">Scripts go here:</div></a>
         
     </div>
 
@@ -33,17 +32,18 @@
 
             <p1>As the script name suggests, this script controlls how the player can move through the forest. I'm not sure whether the player needs a sprint button,
                 but I found it convenient to be able to walk slowly around the fires, and quickly around the forest. 
-                <br>I implemented my own gravity force allowing me tighter control over how the player feels to move. 
+                <br><br>I implemented my own gravity force allowing me tighter control over how the player feels to move. 
                 I had an issue where the isGrounded function (line 62 below) was not reliable, but after trying to create 
                 <a href="./bad ground detection.txt">my own isGrounded function</a> and then doing some Googling, I realised the force of gravity must be applied even when the player
                 is on the ground for the function to work properly.
-                <br>Lines 55-58 (below) are to make sure the player is not walking out of bounds. The actual forest is 250x250 but the player is only allowed in a 200x200 zone, creating the illusion
+                <br><br>Lines 55-58 (below) are to make sure the player is not walking out of bounds. 
+                <br>The actual forest is 250x250 but the player is only allowed in a 200x200 zone, creating the illusion
                 that the forest dosen't end, but where the player can explore does, kind of like in the Hunger Games, it seemed the most convenient way to stop the player at the boundary.
-                This also allowed me to create a metaphor with the trodden path extending beyond the bounds of the player, there is no meaningful destination for those following predefined
+                <br>This also allowed me to create a metaphor with the trodden path extending beyond the bounds of the player, there is no meaningful destination for those following predefined
                 routes through life, and not their own; in fact, there is no destination, only more path, becuase they never really knew where they wanted to go in the first place.
-                <br><br>Click the code below to download the C# file
+                <br><br>Click the code below to download the C# file:
             </p1>
-            <img id="image" src="./PlayerController.png" onclick="document.location = './PlayerController.cs'"></img>
+            <img id="image" style="width: 100%" src="./PlayerController.png" onclick="document.location = './PlayerController.cs'"></img>
         </div>
 
 
