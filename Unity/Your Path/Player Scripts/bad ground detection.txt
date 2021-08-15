@@ -1,0 +1,11 @@
+Issue: logic cannot differentiate between walking down a slope and falling, should probably check with other mechanisms too.
+if (transform.position.y - prevHeight < -0.0001) //if going down (using a small negative number to ignore when sometimes player falls slightly through floor)
+{ 
+    down = true;
+    jumpAllowed = false;
+}
+else if (down) //if was previously going down and is no longer (ie collided with ground)
+{
+    down = false;
+    jumpAllowed = true;
+}
