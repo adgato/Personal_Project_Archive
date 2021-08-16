@@ -41,9 +41,26 @@
                 that the forest dosen't end, but where the player can explore does, kind of like in the Hunger Games, it seemed the most convenient way to stop the player at the boundary.
                 <br>This also allowed me to create a metaphor with the trodden path extending beyond the bounds of the player, there is no meaningful destination for those following predefined
                 routes through life, and not their own; in fact, there is no destination, only more path, becuase they never really knew where they wanted to go in the first place.
-                <br><br>Click the code below to download the C# file:
+
+                <br><br><b>Click the code below to download the C# file:</b>
             </p1>
             <img id="image" style="width: 100%" src="./PlayerController.png" onclick="document.location = './PlayerController.cs'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>Camera Controller</h1>
+
+            <p1>As the script name also suggests, this script controlls how the player can move the camera. 
+                <br><br>For simplicity, I made the camera a child object of the player object, so the camera
+                would always follow the player. This includes yaw rotation, however, it would be unnatural for the player object to rotate around the pitch axis, as typically only heads and not entire bodies
+                rotate around this axis in games (and reality for that matter). So I created a script allowing the camera to additionally rotate around the pitch axis. 
+                <br>Also like in reality and games (I'm starting to see a trend here...), I limited the pitch rotation to ±90° of looking forward.
+                <br><br>I find it fascinating how ignorant I was before I made this game as to the subtleties of game design, such as limiting the camera rotation. Prehaps it is in these subtleties that
+                game design can be innovated for unique experiences. 
+                <br>Learning for myself the process of making games has certainly helped me appreciate how mammoth the task is of creating the games I play, or in fact creating any software.
+
+                <br><br><b>Click the code below to download the C# file:</b>
+            </p1>
+            <img id="image" style="width: 100%" src="./CameraController.png" onclick="document.location = './CameraController.cs'"></img>
         </div>
 
 
