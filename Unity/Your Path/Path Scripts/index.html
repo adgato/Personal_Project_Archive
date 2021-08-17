@@ -32,7 +32,7 @@
                 a route to follow, or something like that... ¯\_(シ)_/¯
                 <br>
             </p1>
-            <img src="./Entire forest.png"></img>
+            <img style="max-width: 100%;" src="./Entire forest.png"></img>
         </div>
 
         <div class="InfoBox">
@@ -40,7 +40,7 @@
 
             <p1>This script generates a path given waypoints I have positioned in the forest using a <a href="https://github.com/SebLague/Path-Creator">path creator algorithm by Sebastian Lague</a>.
                 <br>I recommend watching his videos on it to understand how it works.
-                <br><br>I wrote this script, and didn't use the nodes attached to the path, to position the path, as it allowed me to automatically make the path go up and down with the terrain,
+                <br><br>I wrote this script to -and so avoided using the nodes attached to the path by default to- position the path, as it allowed me to automatically make the path go up and down with the terrain,
                 along with the rest of the scripts on this page.
 
                 <br><br><b>Click the code below to download the C# file:</b>
@@ -51,12 +51,24 @@
         <div class="InfoBox">
             <h1>Ground Waypoints</h1>
 
-            <p1>This script automatically make the path go up and down with the terrain
+            <p1>As mentioned above, this script automatically makes the path go up and down with the terrain. This allowed me to relatively quickly construct a path through the forest.
+                <br>It also hides the waypoint nodes when the game starts, as they are only supposed to be seen in the Unity Editor.
 
                 <br><br><b>Click the code below to download the C# file:</b>
                 <br>
             </p1>
-            <img id="image" src="./GeneratePath.png" onclick="document.location = './GeneratePath.cs'"></img>
+            <img id="image" src="./GroundWaypoints.png" onclick="document.location = './GroundWaypoints.cs'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>Point Offset</h1>
+
+            <p1>This tiny script is attached to each waypoint node, allowing me to adjust it's local height relative to the ground below it. This makes the elevation of the path
+                either higher or lower at the waypoint, depending on my preference.
+
+                <br><br><b>Click the code below to download the C# file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./PointOffset.png" onclick="document.location = './PointOffset.cs'"></img>
         </div>
     </div>
 
