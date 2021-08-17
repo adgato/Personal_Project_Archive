@@ -9,6 +9,9 @@ var Chapters   = Headers.children;
 function getGitURL() {
     document.location = 'https://github.com/xandprojects/xandprojects.github.io/tree/main/' + document.location.href.split('.io/')[1].replace('index','').replace('.html','');
 }
+function getBackURL() {
+    document.location = document.location.href.split('/').slice(0, -1).join('/');
+}
 
 function moveSlider(event) {
     var y = event.clientY;
