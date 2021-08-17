@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(0, 50, 255); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>Terrain Generation</h1>
+            
+            <p1>To procedurally generate the hilly terrain, I used <a href="https://www.youtube.com/playlist?list=PLFt_AvWsXl0eBW2EiBtl_sxmDtSgZBxB3">code written by Sebastian Lague</a>.
+                <br>I copied relevant code from episodes 1-5, so I recommend watching them to understand how the algorithm works :)
+                
+                <br><br>I copied the code into the files <a href="./GenerateMesh.cs">GenerateMesh.cs</a> and <a href="./Noise.cs">Noise.cs</a> and added a collision mesh creator for obvious reasons.
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>Generate World</h1>
+
+            <p1>Inspired by Sebastian's procedural landmass generation, I created a procedural forest generator - in retrospect that would've been a much more apt name for the script... (v _ v)
+                <br><br>The amount of <code>if</code> statements I used writing it hurt my optimisation hunting eyes, but I think they were at least neccessary to make the code understandable.
+                In short, the code generates the trees, sticks, stones and log seats at spaced yet pseudo-random positions throughout the forest. Trees are the most probable to be generated, logs
+                the least. The trees are at pseudo-random heights, with a pseudo-random number of branches (2-4). 
+                <br><br>They are pseudo-randomly generated so that the same forest is generated for a given seed; however, ultimately I decided to generate a random seed for each different game, because
+                each player's life is different, so their forest is different and thus their route through it; yet the trodden path remains the same for everyone. It also makes the forest harder
+                to navigate.
+                <br><br>Surprisingly, the most technical part of this entire project was getting the generated sticks, stones and seats to align themselves with the terrain beneath them. I settle on a solution
+                which allowed me to calculate the graident between the collision points on the terrain from two raycasts, which the object would then be aligned to: lines 21-42 below.
+
+                <br><br><b>Click the code below to download the C# file:</b>
+            </p1>
+            <img id="image" src="./GenerateWorld.png" onclick="document.location = './GenerateWorld.cs'"></img>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
