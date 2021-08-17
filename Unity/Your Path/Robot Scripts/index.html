@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(0, 50, 255); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>The Robots</h1>
+            Although the animations are subtle, I found that animating the robots make them seem a lot more "life like". 
+            <br><br>I decided the NPC's should be robots primarily because they would be simpler to design, but also so to better illustrate the characters
+            of the robots, using their eye colour to connote their personalities and differentiate them.
+            <br><br>You can view all their dialogue <a href="./Robot dialogue.txt">here</a>.
+        </div>
+        <div class="InfoBox">
+            <h1>Afriad Robot</h1>
+            <img src="./AfraidRobot.png" style="max-width: 100%;"></img>
+
+            <p1>The Afraid Robot, found at the "cosy fire", is constantly shifting their gaze. I wanted the Afraid Robot to represent those too afraid to 
+                do what they wish, so they stay safe in their current position. Certainly, this is everyone at some point, but it needn't be, we should all strive to 
+                act as we please, and shouldn't be stopped by others. 
+                <br><br>However, the Afraid Robot is also waiting for help before they go on their way, for someone or something to follow, referencing the trodden path as a guide.
+                <br>This is a mistake, for the trodden path (the mainstream route through life), as described by the Stressed Robot, will not meaningfully guide them through the forest (life),
+                as they have no control over where they are going.
+                <br><br>Can you tell I enjoy creating and explaining metaphors?! :D I know a metaphor shouldn't really be explained, and mine are certainly still open to interpretation (even in my own mind!),
+                so take from my vague explanations what you will :)
+
+                <br><br><b>Click the code below to download the C# file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./AfraidRobotAnimate.png" onclick="document.location = './AfraidRobotAnimate.cs'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>Stressed Robot</h1>
+            <img src="./StressedRobot.png" style="max-width: 100%;"></img>
+
+            <p1>The Stressed Robot slowly shakes from side to side, as they explain their mistake in following the path. I wanted the Stressed Robot to elaborate on the mistakes of those following the 
+                trodden path, and almost make the player feel guilty for doing such. The Robot is positioned at the "end" of the path, so in order for the player to find it, they must've followed the
+                path. At this point they would be clueless to their mistake, and the Robot says they were too, initially. By directly addressing the player, the Robot allows the player to realise their 
+                mistake, and hopefully understand their mistake in this game is a metaphor to a potential mistake in their attitude towards their life.
+                <br>I feel like I'm back in high school, writing English essays!
+                <br><br>For clarity, I would like to state that the overall message is that people should be, if not already, in firm control of their life, and independent in their decision as to how they
+                lead it. I think this is a perfectly acceptable, if hard to achieve, message, and I don't want to be cruel in conveying it, but I find making an example out of the Robot and potentially the player
+                an effective method of doing such. ( ＾v＾)
+
+                <br><br><b>Click the code below to download the C# file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./StressedRobotAnimate.png" onclick="document.location = './StressedRobotAnimate.cs'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>Wise Robot</h1>
+            <img src="./WiseRobot.png" style="max-width: 100%;"></img>
+
+            <p1>The Wise Robot can only be stumbled upon, as they are located in the dark heart of the forest. Because the player had to decide on their own path through the forest, as I recommend,
+                the Wise Robot can be seen as a reward for doing such. 
+                <br><br>The Robot explains philosophy of Optimistic Nihilism, what the game is based on, within the context of the forest.
+                <br>This is to help the player to understand the message of the game, so they can interpret the game as a lesson.
+                <br>Because it is so elegant, I paraphrased and stole some of the lines from <a href="https://youtu.be/MBRqu0YOH14">Kurzgesagt's video on Optimistic Nihilism</a>, which was the main 
+                inspiration for this game.
+                <br><br>The Wise Robot politely shifts his focus between the fire and the player;
+                I found that the Robot looking at the player helps the words he is saying to have more impact, but to constantly stare at the player may come off as intimidating, where as I wanted him
+                to seem understanding and kind.
+
+                <br><br><b>Click the code below to download the C# file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./WiseRobotAnimate.png" onclick="document.location = './WiseRobotAnimate.cs'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>Text Rotate</h1>
+
+            <p1>For readability, I wrote a script to constantly make the words the Robots were saying (above their heads) face the player camera.
+                <br>The script also automatically progresses through the dialogue while the player is close to the Robot, and resets the dialogue if the player has seen it all
+                and approaches the Robot again; otherwise if the player approaches again, the dialogue will continue where it left off.
+
+                <br><br><b>Click the code below to download the C# file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./TextRotate.png" onclick="document.location = './TextRotate.cs'"></img>
+        </div>
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
