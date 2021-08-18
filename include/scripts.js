@@ -6,6 +6,10 @@ var Contents   = document.getElementById("Contents");
 var Toggle     = document.getElementById("HideContents");  
 var Chapters   = Headers.children;
 
+var title = document.location.href.split('/');
+title = title[title.length - 2];
+document.title = title.replace('.github.io','');
+
 function getGitURL() {
     document.location = 'https://github.com/xandprojects/xandprojects.github.io/tree/main/' + document.location.href.split('.io/')[1].replace('index','').replace('.html','');
 }
