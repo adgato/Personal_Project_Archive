@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Version 1"> <div class="Option">Version 1</div></a>
+        <a href="./Version 2"> <div class="Option">Version 2</div></a>
+        <a href="./Version 3"> <div class="Option">Version 3</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>About: Neural Net</h1>
+            
+            <p1>This way a project where I tried to create a functioning neural network from scratch in python.
+                At first I think, June or before, 2019, I created a single layer perceptron following a course on <a href="https://brilliant.org/courses/artificial-neural-networks/">Brilliant</a>.
+                by Dec 2020, I had progressed to a n-layer deep network with visualisations following <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">3b1b's course</a>.
+                <br><br>Because its been so long since I've used some of my earlier projects, I can't remember quite how they work...
+                <br>I only upload them here really so you can appreciate, and I can remember, the full journey I went through iterating on my neural network designs before my final project ( ＾v＾)
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>

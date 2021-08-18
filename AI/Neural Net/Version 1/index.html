@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Version 1"> <div class="Option">Version 1</div></a>
+        <a href="./Version 2"> <div class="Option">Version 2</div></a>
+        <a href="./Version 3"> <div class="Option">Version 3</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>Perceptron (NN v1-1)</h1>
+            
+            <p1>First, I created a perceptron following a course on <a href="https://brilliant.org/courses/artificial-neural-networks/">Brilliant</a>.
+                The backpropagation method used in all Version 1 networks did not involve calculus at all, instead the product of the output and the label was added to each weight after every
+                forward propagation.
+                <br><br>I remember being very proud of this code, I used a variation of it during a speech I gave to demonstrate how neural networks could naturally bias one characteristic of an input.
+
+                <br><br><b>Click the code below to download the python file:</b>
+            </p1>
+            <img id="image" src="./Perceptron.png" onclick="document.location = './Neural Net v1-1.py'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>2 Layer Network (NN v1-2)</h1>
+            
+            <p1>Next, I created a 2 layer neural net following the course on <a href="https://brilliant.org/courses/artificial-neural-networks/">Brilliant</a>.
+                I was very surprised when it seemed to work, and haven't touched this specific code since, so I really have no idea if it is effective! 
+
+                <br><br><b>Click the code below to download the python file:</b>
+            </p1>
+            <img id="image" src="./2 Layer Net.png" onclick="document.location = './Neural Net v1-2.py'"></img>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
