@@ -8,10 +8,10 @@ var Chapters   = Headers.children;
 
 var title = document.location.href.split('/');
 title = title[title.length - 2];
-document.title = title.replace('.github.io','');
+document.title = title.replace('.github.io','').replaceAll('%20',' ');
 
 function getGitURL() {
-    document.location = 'https://github.com/xandprojects/xandprojects.github.io/tree/main/' + document.location.href.split('.io/')[1].replace('index','').replace('.html','');
+    document.location = 'https://github.com/xandprojects/xandprojects.github.io/tree/main/' + document.location.href.split('.io/')[1].replace('index','').replace('recent','').replace('.html','');
 }
 function getBackURL() {
     document.location = document.location.href.split('/').slice(0, -2).join('/');
@@ -61,7 +61,7 @@ function togglePDF(index) {
     }
 }
 
-document.getElementById('logohover').src = '/include/' + getComputedStyle(document.querySelector(':root')).getPropertyValue('--theme').slice(1) + '.png';
+document.getElementById('logohover').src = '/include/' + getComputedStyle(document.querySelector(':root')).getPropertyValue('--theme').slice(1).replaceAll(',','%2C') + '.png';
 
 for (i=0; i < Chapters.length; i++) {
     var div = document.createElement('div');
