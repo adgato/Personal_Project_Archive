@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Construction"> <div class="Option">Construction</div></a>
+        <a href="./Camera & UI"> <div class="Option">Camera & UI</div></a>
+        <a href="./Hand detect"> <div class="Option">Hand detect</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>About: AR Headset</h1>
+            
+            <p1>Heh, why I made this one is simple: I wanted an AR headset because I think they're really cool, but they were all too expensive, so I decided to make my own!
+                <br>Obviously, mine is at least half as good and twice as big as those on the market, so roughly 8x as inconvinient, but its still really cool :D 
+                <br>This project was my first proper project using the raspberryPI, my first actually useful implementation of a neural net I made in pyTorch and my first
+                experience of actual frustration while coding... but it was worth it!
+                <br>My frustration came from my camera cabel being too short; there being no documentation I could find on the internet about how to make the mmalobj outputs render only semi-opaque; limited
+                mmalobj documentation in general; only old versions of pytorch working for me on the rPI4; not being able to easily transfer neural networks to older versions
+                of pytorch; my pi crashing every time I ran a version of my Headset with a higher resolution; and most importantly of all: having to write code onto my rPI from a tiny, awkward
+                keyboard!!! Oh, and also the fact that my rPI4 completely broke just as I was about to finish - my files were luckily on a USB drive, but I had to reinstall
+                raspbian, python all the python libraries required.
+                <br>So, if you wanted to make something like this yourself, you've come to the right place! Let me be your beacon of hope!
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>Download: AR Headset</h1>
+            
+            <p1><b>Hardware:</b>
+                Here are the products I purchased to make the AR headset:
+                <br>• <a href="https://thepihut.com/products/raspberry-pi-4-model-b">Raspberry Pi 4 Model B</a>
+                <br>• <a href="https://thepihut.com/products/raspberry-pi-4-case?variant=31140399874110">Raspberry Pi 4 Dark Case</a>
+                <br>• <a href="https://www.amazon.co.uk/TechRise-Adjustable-Comfortable-Compatible-Smartphones/dp/B078946LZM/">5 inch 3D VR Headset</a>
+                <br>• <a href="https://www.amazon.co.uk/MakerHawk-Wide-angle-Automatically-Day-Vision-Night-Vision/dp/B07DRH5Y5S/">PI 4 Wide Angle Infra Red Camera</a>
+                <br>• <a href="https://www.amazon.co.uk/Raspberry-Screen-Capacitive-Touch-Monitor/dp/B07YCBWRQP/">5 inch HDMI Capacitive Touch Screen Monitor</a>
+                <br><br>Note: I cut a hole in the Pi case so the camera cabel could run into the case; I cut a hole in the front of the headset to make room for the camera (which I screwed into position);
+                I cut holes in the top so I could plug the power and HDMI cabels into the screen, and holes in the top to allow the screen to fit. I also attached the Pi to the headset using velcro.
+                <br>Be careful when doing all of this! You don't want to break anything!
+                <br><br><b>Software:</b>
+                <br>This is the wheel I used to download pyTorch:
+                <br><a href="torch-1.0.0a0+8322165-cp37-cp37m-linux_armv7l.whl">torch-1.0.0a0+8322165-cp37-cp37m-linux_armv7l.whl</a>
+                <br>In order to screenshot the output from the camera (the best (in my experience) way to capture photos from the camera while it is streaming),
+                I needed to install <a href="https://github.com/AndrewFromMelbourne/raspi2png">raspi2png</a>.
+                <br><br>Attached in <a href="AR headset.zip">this zip file</a> are all the files I used to create this project, although I have included the pretrained model I
+                created for this project (handNet.txt), I have also included the files I created to create said pretrained model, in case you wanted to make your own :)
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
