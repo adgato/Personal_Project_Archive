@@ -51,13 +51,31 @@
                 <br>The 48 images are then saved.
                 <br><br>In order to automate this process, I created a python script that lets me click on the sections of the image where 
                 I think a hand is to label them 1, and then when I press enter, its splits the image into the 48 25x25 images, with the filename including the label (1 or 0).
-                <br><video width="50%" controls> 
+                <br><video style="width: 50%; border: 5px solid rgb(15, 15, 15);" controls> 
                     <source src="annotating.mp4">
                 </video>
+
                 <br><br><b>Click the code below to download the python file:</b>
                 <br>
             </p1>
             <img id="image" src="./semi-automatic annotator.png" onclick="document.location = './semi-automatic annotator.py'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>CSV Writer</h1>
+            
+            <p1>Finally, I needed to write a csv file which will the DataLoader (see the Detect Hand page) which images from the data folder to load.
+                <br><br>At first, I just added all of the images, but then the ratio of images with hands to images without was ~1:47.
+                <br>This meant the network would get 47/48 classifications correct if it just guessed 0 (no hand in image) each time.
+                This was written to the trainData.csv and testData.csv files in the code below.
+                <br><br>I ended up using trainDataSmall.csv and testDataSmall.csv to train the network, in which I included as many hand images as none hand,
+                so it shouldn't have a bias towards a specific prediction.
+                <br><br>Note: I think I overwrote the code I used to do this, so I've tried to recreate said code below, I haven't tested it, so 
+                if it dosen't work, feel free to <a href="mailto:xandprojects@gmail.com">email</a> me.
+
+                <br><br><b>Click the code below to download the python file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./csv writer.png" onclick="document.location = './csv writer.py'"></img>
         </div>
 
     </div>
