@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>UI</h1>
+            <img src="display.jpg" style="max-width: 50%; border: 5px solid rgb(15, 15, 15);"></img>
+            
+            <p1><br>(I have commited the great programmer sin of not bothering to screenshot a screen and instead taking a photo of it and cropping...)
+                <br><br>Anyway, above you can see the UI. I decided to use turtle graphics to render the UI, partially because I was already familiar with it, 
+                partially because I knew the PI could handle it. It proved much more efficient than rendering the UI onto the camera display, because the way
+                I did it the camera and UI operated in parallel.
+                <br>To allow the UI to be seen through the left eye, I made the left display partially transparent. 
+                <br><br>Interesting point: because I only wanted the UI to be in the left eye 
+                (and keep the right eye opaque, as the screenshots of the display needed to be opaque), the photo "button", needed to be on the left of the left eye display,
+                so my eyes would not ignore it in favour of the right eye display.
+                <br><br>I left a lot of room at the top of the display, which I could have used for more than just displaying the camera, but I couldn't think of anything useful
+                to put there. For example, a map might've been neat, but I was only going to use the headset in my room...
+                <br>It was the same with the buttons, I included a photo button as a POC, but the AR headset didn't really need any more functionality...
+                <br>The photo button activates when a hand is detected over the button. However, it requires confirmation via another detection of a hand over the button before
+                it takes the photo, as sometimes the AI detects something over the button that it thinks is a hand but isn't. It's worth mentioning that a screenshot is taken
+                of the display every 2-3 seconds, and this is the input the AI uses to detect hands.
+                <br><br>The red squares are places where the AI has detected the presence of a hand, the intensity of red represents it's certainty, but any certainties below 0.5
+                are ignored. (It works best in daylight with the headset on, but alright despite lack of these conditions.)
+                <br><br>Perhaps I will improve the UI in the future with gyroscopic functionality... I'd like to, but we'll see...
+                <br><img src="photo.jpg" style="max-width: 50%; border: 5px solid rgb(15, 15, 15);"></img>
+
+                <br><br><b>Click the code below to download the python file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./camera.png" onclick="document.location = './camera.py'"></img>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
