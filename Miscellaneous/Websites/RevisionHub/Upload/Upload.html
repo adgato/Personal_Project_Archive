@@ -1,0 +1,63 @@
+<style>
+    input[type="file"] { display: none; }
+    .FileUpload {
+        font-family: consolas_;
+        background-color: rgba(30, 30, 30, 0.95); 
+        border-radius: 15px;
+        border: 5px solid rgb(15, 15, 15); 
+        padding: 5px;
+    } 
+</style>
+<body>
+    
+<h1>Upload files</h1>
+<form action="upload.php" name="uploadFiles" method="post" enctype="multipart/form-data">
+    Select file to upload:
+    <br><br>
+    <label name="fileToUpload" for="fileToUpload" class="ClickButton">
+        <input type="file" name="fileToUpload" id="fileToUpload" class="FileUpload">
+        Upload File
+    </label>
+    <br><br>
+    <div id="dropContainer" class="FileUpload">
+        Or Drop Here<br><br><br><br><br><br>
+    </div>
+    <br>
+    Rename file:
+    <input type="text" class="ClickButton" id="fileName" name="fileName" value="filename" style="width: 75%" onclick="this.setSelectionRange(0, 6)">
+    <wbr><input type="submit" class="ClickButton" id="UploadFile" value="Upload">
+</form>
+<script>
+
+    dropContainer.ondragover  = function(evt) { 
+        evt.preventDefault();
+        dropContainer.style.border = "5px solid var(--theme)";
+    };
+    dropContainer.ondragleave = function(evt) { 
+        evt.preventDefault();
+        dropContainer.style.border = "5px solid rgb(15, 15, 15)";
+    };
+    dropContainer.ondrop = function(evt) {
+        evt.preventDefault();
+        dropContainer.style.border = "5px solid rgb(15, 15, 15)";
+        fileToUpload.files = evt.dataTransfer.files;
+        updateName();
+    };
+    fileToUpload.onchange = function() {
+        updateName();
+    };
+
+    function updateName() {
+        const fullPath = fileToUpload.value;
+        if (fullPath) {
+            var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+            var filename = fullPath.substring(startIndex);
+            if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                filename = filename.substring(1);
+            }
+            fileName.value = filename
+        }
+    }
+
+</script>
+</body>

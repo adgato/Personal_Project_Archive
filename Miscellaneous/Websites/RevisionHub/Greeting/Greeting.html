@@ -1,0 +1,37 @@
+
+<style>
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 50%;
+    }
+
+    .parent div {
+        display: block;
+        width: 355px;
+        height: 200px;
+    }
+
+</style>
+<body>
+
+<script>
+    
+    var today = new Date();
+    var hour  = today.getHours();
+    if (hour < 12) {
+        var greeting = 'Good morning!';
+    } else if (hour < 18) {
+        var greeting = 'Good afternoon!';
+    } else if (hour < 23) {
+        var greeting = 'Good evening!';
+    }
+
+    var h1 = document.createElement('h1');
+    h1.innerHTML = greeting;
+    document.scripts[document.scripts.length - 1].parentNode.appendChild(h1);
+
+</script>
+
+</body>
