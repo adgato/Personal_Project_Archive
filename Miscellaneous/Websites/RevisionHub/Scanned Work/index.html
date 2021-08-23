@@ -28,22 +28,16 @@
 
     <div id="PageInfo">
         <div class="InfoBox">
+            <h1>Get scanned work</h1>
+            <form action="javascript:alert('You can\'t do that here');" method="post">
+                <input type="submit" name="checkMail" class="ClickButton" value="Get scanned work">
+            </form> 
+            <p1 id="response" style="white-space: pre">
             <script>
-    
-                var today = new Date();
-                var hour  = today.getHours();
-                if (hour < 12) {
-                    var greeting = 'Good morning!';
-                } else if (hour < 18) {
-                    var greeting = 'Good afternoon!';
-                } else if (hour < 23) {
-                    var greeting = 'Good evening!';
+                const param = window.location.search.substr(1).split('=');
+                if (param[0].includes("response")) {
+                    response.innerHTML = decodeURIComponent(param[1].split('&')[0].replaceAll('+',' '));
                 }
-            
-                var h1 = document.createElement('h1');
-                h1.innerHTML = greeting;
-                document.scripts[document.scripts.length - 1].parentNode.appendChild(h1);
-            
             </script>
         </div>
         <div class="InfoBox">

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 0, 255); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <style>
+                .parent {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));;
+                    gap: 10px;
+                    width: 100%;
+                }
+            
+                .parent div {
+                    display: block;
+                    width: 355px;
+                    height: 200px;
+                }
+            
+            </style>
+            <h1>Revision music</h1>
+            <div class="parent">
+                <div id="image" onclick="window.open('https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1')">
+                    <iframe style="pointer-events: none;" src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&mute=1&controls=0" frameborder="0" width="355px" height="200"></iframe>
+                </div>
+                <div id="image" onclick="window.open('https://www.youtube.com/playlist?list=PLGh8nnGk_kLj-gTAeOSFi0hEV-4Zc22pl')">
+                    <iframe style="pointer-events: none;" src="https://www.youtube.com/embed/dgCnYsDTiXU?autoplay=1&mute=1&controls=0" frameborder="0" width="355px" height="200"></iframe>
+                </div>
+                <div id="image" onclick="window.open('https://www.youtube.com/playlist?list=PLGh8nnGk_kLjVq2wiefjT_Z2lkCHPQbIo')">
+                    <iframe style="pointer-events: none;" src="https://www.youtube.com/embed/vQzqTTaWefY?autoplay=1&mute=1&controls=0" frameborder="0" width="355px" height="200"></iframe>
+                </div>
+                <div id="image" onclick="window.open('https://www.youtube.com/embed/Sdf5-3yddvA?autoplay=1')">
+                    <iframe style="pointer-events: none;" src="https://www.youtube.com/embed/Sdf5-3yddvA?autoplay=1&mute=1&controls=0" frameborder="0" width="355px" height="200"></iframe>
+                </div>
+                <div id="image" onclick="window.open('https://www.youtube.com/playlist?list=PL0PwxJm2JWCRdZ41OofKKAVGTbuJ8lbnd')">
+                    <iframe style="pointer-events: none;" src="https://www.youtube.com/embed/rACbr2ezLFk?autoplay=1&mute=1&controls=0" frameborder="0" width="355px" height="200"></iframe>
+                </div>
+                <div id="image" onclick="window.open('https://www.youtube.com/playlist?list=PLUAsF5s_xnHtw0CAoHTYDESe9o2BKCRIN')">
+                    <iframe style="pointer-events: none;" src="https://www.youtube.com/embed/CPEEL_pbk3U?autoplay=1&mute=1&controls=0" frameborder="0" width="355px" height="200"></iframe>
+                </div>
+                <div id="image" onclick="window.open('https://www.youtube.com/playlist?list=PLeJkY50HY7q6jnvzVuFybEmgXJB0IYurn')">
+                    <iframe style="pointer-events: none;" src="https://www.youtube.com/embed/2DVpys50LVE?autoplay=1&mute=1&controls=0" frameborder="0" width="355px" height="200"></iframe>
+                </div>
+                <div id="image" onclick="window.open('https://www.youtube.com/playlist?list=PLrjzGRNmGxowCF-Gfw-Xj0fI3Cu_CE-c-')">
+                    <iframe style="pointer-events: none;" src="https://www.youtube.com/embed/o9Phw-cJqBQ?autoplay=1&mute=1&controls=0" frameborder="0" width="355px" height="200"></iframe>
+                </div>
+                
+            </div>
+        </div>
+        <div class="InfoBox">
+            <h1>Music</h1>
+            
+            <p1>For my own convinience, I included a selection of live stream / playlists on the homepage to listen to while revising :)
+                <br>It was way harder to perfectly overlay the clickable divider onto the youtube iframe than I thought it would be... but it was worth it in the end!
+
+                <br><br><b>Click the code below to open the HTML file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./music.png" onclick="document.location = './Music.html'"></img>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>

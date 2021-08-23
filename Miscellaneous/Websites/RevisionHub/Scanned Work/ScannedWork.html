@@ -1,11 +1,11 @@
 <h1>Get scanned work</h1>
-        <form action="scannedwork.php" method="post">
-            <input type="submit" name="checkMail" class="ClickButton" value="Get scanned work">
-        </form> 
-        <p1 id="response" style="white-space: pre">
-        <script>
-            const param = window.location.search.substr(1).split('=');
-            if (param[0].includes("response")) {
-                response.innerHTML = decodeURIComponent(param[1].split('&')[0].replaceAll('+',' '));
-            }
+<form action="scannedwork.php" method="post">
+    <input type="submit" name="checkMail" class="ClickButton" value="Get scanned work">
+</form> 
+<p1 id="response" style="white-space: pre">
+<script>
+    const param = window.location.search.substr(1).split('=');
+    if (param[0].includes("response")) {
+        response.innerHTML = decodeURIComponent(param[1].split('&')[0].replaceAll('+',' '));
+    }
 </script>
