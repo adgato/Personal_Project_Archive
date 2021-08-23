@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 0, 255); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <style>
+                .ClickButton {
+                    font-family: consolas_;
+                    font-size: 16px;
+                    color:  rgb(112, 112, 112);
+                    background-color: rgba(30, 30, 30, 0.95); 
+                    border-radius: 15px;
+                    border: 5px solid rgb(15, 15, 15); 
+                    padding: 5px;
+                } .ClickButton:hover {
+                    border: 5px solid var(--theme);
+                    cursor: pointer;
+                } .ClickButton:focus {
+                    outline: none;
+                    border: 5px solid var(--theme);
+                    cursor: pointer;
+                }
+                input[type="file"] { display: none; }
+                .FileUpload {
+                    font-family: consolas_;
+                    background-color: rgba(30, 30, 30, 0.95); 
+                    border-radius: 15px;
+                    border: 5px solid rgb(15, 15, 15); 
+                    padding: 5px;
+                } 
+            </style>
+            <h1>Upload files</h1>
+            <form action="javascript:alert('You can\'t do that here');" name="uploadFiles" method="post" enctype="multipart/form-data">
+                Select file to upload:
+                <br><br>
+                <label name="fileToUpload" for="fileToUpload" class="ClickButton">
+                    <input type="file" name="fileToUpload" id="fileToUpload" class="FileUpload">
+                    Upload File
+                </label>
+                <br><br>
+                <div id="dropContainer" class="FileUpload">
+                    Or Drop Here<br><br><br><br><br><br>
+                </div>
+                <br>
+                Rename file:
+                <input type="text" class="ClickButton" id="fileName" name="fileName" value="(1234) 23 Aug 2021.pdf " style="width: 75%" onclick="this.setSelectionRange(0, 6)">
+                <wbr><input type="submit" class="ClickButton" id="UploadFile" value="Upload">
+            </form>
+            <script>
+            
+                dropContainer.ondragover  = function(evt) { 
+                    evt.preventDefault();
+                    dropContainer.style.border = "5px solid var(--theme)";
+                };
+                dropContainer.ondragleave = function(evt) { 
+                    evt.preventDefault();
+                    dropContainer.style.border = "5px solid rgb(15, 15, 15)";
+                };
+                dropContainer.ondrop = function(evt) {
+                    evt.preventDefault();
+                    dropContainer.style.border = "5px solid rgb(15, 15, 15)";
+                    fileToUpload.files = evt.dataTransfer.files;
+                    updateName();
+                };
+                fileToUpload.onchange = function() {
+                    updateName();
+                };
+            
+                function updateName() {
+                    const fullPath = fileToUpload.value;
+                    if (fullPath) {
+                        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                        var filename = fullPath.substring(startIndex);
+                        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                            filename = filename.substring(1);
+                        }
+                        fileName.value = filename
+                    }
+                }
+            
+            </script>
+        </div>
+        <div class="InfoBox">
+            <h1>Upload Files</h1>
+            
+            <p1>Pretty self-explanatory...
+                <br>There is a major vulnerability here because the code allows the user to upload potentially malicious php files to my laptop. However, the only user is me, so it's alright!
+                <br>Also, it's a feature not a bug that when the user clicks on the filename to rename, it only selects the first 6 characters, as this allows the date for the scanned pdf files to remain.
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>The HTML file</h1>
+            
+            <p1><b>Click the code below to open the HTML file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./uploadhtml.png" onclick="document.location = './Upload.html'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>The PHP file</h1>
+            
+            <p1><b>Click the code below to download the PHP file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./uploadphp.png" onclick="document.location = './upload.php'"></img>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
