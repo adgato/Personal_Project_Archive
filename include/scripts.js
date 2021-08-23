@@ -10,6 +10,8 @@ var title = document.location.href.split('/');
 title = title[title.length - 2];
 document.title = title.replace('.github.io','').replaceAll('%20',' ');
 
+document.getElementById('logohover').src = '/include/' + getComputedStyle(document.querySelector(':root')).getPropertyValue('--theme').slice(1).replaceAll(',','%2C') + '.png';
+
 function getGitURL() {
     document.location = 'https://github.com/xandprojects/xandprojects.github.io/tree/main/' + document.location.href.split('.io/')[1].replace('index','').replace('recent','').replace('.html','');
 }
@@ -60,8 +62,6 @@ function togglePDF(index) {
         Headers.children[index].children[3].textContent          = "Open below";
     }
 }
-
-document.getElementById('logohover').src = '/include/' + getComputedStyle(document.querySelector(':root')).getPropertyValue('--theme').slice(1).replaceAll(',','%2C') + '.png';
 
 for (i=0; i < Chapters.length; i++) {
     var div = document.createElement('div');

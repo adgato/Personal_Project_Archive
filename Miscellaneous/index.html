@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 0, 255); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Websites"> <div class="Option">Websites</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>How to navigate the xandprojects/Miscellaneous page:</h1>
+            
+            <p1>Navigate like you would on any other page on this website! 
+                <br>Projects pages on the left!
+                <br>Code on the left in the project pages!
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>About miscellaneous projects</h1>
+            
+            <p1>Well, I often end up writing code for projects that don't fit into the categories listed on the home page,
+                so the ones worth sharing I've decided to include on this website under the miscellaneous category.
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>

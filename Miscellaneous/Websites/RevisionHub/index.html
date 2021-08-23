@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 0, 255); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Custom InfoBoxes"> <div class="Option">Custom InfoBoxes</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>About: RevisionHub</h1>
+            <br><img src="homepage.png" style="max-width: 50%; border: 5px solid rgb(15, 15, 15);"></img>
+            
+            <p1><br>I made RevisionHub in preperation for my education at sixth form.
+                <br>As you might have noticed, it is very similar to this website, but in fact, the design for RevisionHub was made before xandprojects.
+                <br>It acts as a directory browser but presents my revision files in a more aestheticly pleasing than file explorer.
+                <br>What's more, because I used PHP to write the website, I can easily traverse all my folders from a single index.php file!
+                <br>This makes it brilliant because I don't need to add a new index file to each folder I want to navigate (unlike this website...)
+                <br>However, RevisionHub is strictly for my own personal use, on a local server, because one could easily perform directory traversal
+                from the php file and access files outside of the RevisionHub "root" folder.
+                <br>File types displayed include: 
+                <br><br>HTML, <br>PNG (and other image file types), <br>MP4 (and other video file types), <br>PDF, <br>TXT.
+                <br>Other files types are listed with an option to copy their file path (so that I can GUI+R to open them quickly), but not displayed.
+                <br><br>An example of the above file types shown on the website (including other file types, excluding HTML file types (see Custom InfoBoxes for those)) is below:
+                <br><video style="width: 50%; border: 5px solid rgb(15, 15, 15);" controls> 
+                    <source src="filetypes.mp4">
+                </video>
+
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>Download: RevisionHub</h1>
+            
+            <p1>I imagine, however, this file browser could be used for many more purposes than just revision ease.
+                <br>If you want to download and use it for yourself, click <a href="RevisionHub.zip">here</a>.
+                <br>You will need to run a local php server in the directory of the index.php file, to do this I used <a href="https://php.net">php.exe</a>.
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
