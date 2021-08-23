@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>Visualisers</h1>
+            
+            <p1>Music visualisers has always fascinated me, it's like the visuals are dancing around the screen, enjoying the music as much as I, 
+                and I can sit and watch it for hours ( ＾v＾) (...maybe)
+                <br><br>Making my own music visualisers has taught me a lot about how one goes about decomposing a sound track, the structure of WAV files,
+                and how mathematical the nature of audio analysis is. 
+                <br>They're also the most satisfying and cool projects when they work :D
+                <br><br>All of my visualisers work in real time, because all the music I listen to is on youtube, so to capture the audio I use an app called 
+                <a href="https://vb-audio.com/Voicemeeter/">Voicemeeter</a>.
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>GIF to the Beat</h1>
+            <iframe style="width: 50%; border: 5px solid rgb(15, 15, 15);" src="https://www.youtube.com/embed/q4xKWYnlSFk" frameborder="0" allowfullscreen></iframe>
+            
+            <p1><br>This is the coolest code I've written!
+                <br>The code gets audio data from the stream in real time; gets the bass from the data; subtracts it from the previous sample of data (to get the gradient of the sound wave);
+                and iterates a given GIF by a number of frames proportiaonal to said gradient!
+                <br>The idea being, wherever there is a steep gradient in time x bass amplitude graph, there has been a drum beat. In effect, this means the gif moves to the beat!
+                <br>Due to the simplicity of the beat detection algorithm, this code works brilliantly on synthwave music, lofi, and any other songs with a distinct beat, but still decently
+                for other songs. It also works best with seamless GIFs.
+                <br>It threw me out of my seat how well this worked once I had written it!
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>

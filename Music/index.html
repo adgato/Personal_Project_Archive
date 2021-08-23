@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./AR Headset"> <div class="Option">AR Headset</div></a>
+        <a href="./Neural Nets"> <div class="Option">Neural Nets</div></a>
+
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>How to navigate the xandprojects/Music page:</h1>
+            
+            <p1>Simply, the menu on the left lists the Music related projects I've made. In each project page, the menu on the left lists the python code used in said project.
+                <br>Click on them to view. 
+                <br><br>This is the fifth time I've explained how to navigate my page, I'm treating you like a child aren't I? Sorry :(
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>Why I can't stop making musical related code:</h1>
+            
+            <p1>Good question Adam! 
+                <br><br>• I really enjoy listening to music, of any sort that isn't mainstream, because 90% of that music is trash, I don't know why it's so popular.
+                <br><br>• I play piano, not very well, but well enough to satisfy me with my ability - so me being me I've naturally always wanted to see an AI compose and perform
+                their own music, or perhaps even play piano with an AI in accompaniment... I think I started that project August last year, and haven't picked it up since January as of writing, I should.
+                <br><br>• It's cool!
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
