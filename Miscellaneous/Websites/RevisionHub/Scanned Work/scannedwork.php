@@ -1,5 +1,5 @@
 <?php
-    $command = escapeshellcmd('C:/Users/Lenovo/AppData/Local/Programs/Python/Python37/python.exe "C:/Users/Lenovo/My Files/RevisionHub/Scanned Work/scanned_email_reader.py"');
+    $command = escapeshellcmd('PATH_TO/python.exe PATH_TO/scanned_email_reader.py');
     $output = shell_exec($command);
 
     $url = explode('&url=', urldecode($_SERVER['HTTP_REFERER']));
