@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>Turtle Evolve</h1>
+            <img src="arena.png" style="max-width: 75%; border: 5px solid rgb(15, 15, 15);"></img>
+            
+            <p1>Inspired by <a href="https://www.youtube.com/watch?v=0ZGbIKd0XrM">Primer's video</a>, I decided to make a turtle evolution simulator.
+                <br>The turtles need apples for energy, energy to move, and each cycle they move, losing energy. When they are low on energy, they try to reach the border,
+                where they "sleep" if they collected apples, and reproduce by an interger equal to the number of apples they collected - 1.
+                <br><br>The turtle's offspring have slight mutations: 
+                <br>• <b>SIZE</b> - How large they are (larger turtles can eat smaller for energy, but use more energy to move per cycle); 
+                <br>• <b>SPEED</b> - How far they move per cycle (further uses more energy); 
+                <br>• <b>SPEED</b> - How far away they can detect apples, predetors (larger turtles, from which they flee), and prey (smaller turtles, which they will attempt to consume);
+                <br>• <b>RISK</b> - And how low on energy will risk being before returning to the edge.
+                <br>The last three factors are displayed by the red, green and blue components of their colour respectively.
+                <br><br>So, over the course of many generations, the turtles with the best statistics for their environment will outcompete the others, and a local optima for said statistics will be found.
+                <br><br>I also found the simulation very enjoyable to watch!
+                <br><br><b>Click the code below to download the python file (I hope you excuse my very sub-optimal code, I wrote this a while ago, perhaps I'll return to do something like this in Unity):</b>
+                <br>
+            </p1>
+            <img id="image" src="./turtle evolution.png" onclick="document.location = './turtle evolution.py'"></img>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
