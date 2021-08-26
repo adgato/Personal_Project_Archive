@@ -1,0 +1,20 @@
+Write first the OPCODE
+(to indicate that's the command you'd like to execute), 
+then include a 4 bit binary number as the OPERAND after if neccessary.
+Each command should be entered starting from the top right of the cache. 
+
+Mnemonic|Opcode|Explaination
+
+sta	 00 00  Stores accumulator value into variable: OPERAND
+lda	 00 01  Loads variable: OPERAND's value into accumulator 
+
+add	 10 00  Adds value of variable: OPERAND to value in accumulator
+sub	 10 01  Subtracts value in accumulator by value of variable: OPERAND
+
+brz	 01 00  If the accumulator value is 0, jump to code line: OPERAND
+brp	 01 01  If the accumulator value is greater than 0, jump to code line: OPERAND
+bra	 01 10  Jump to code line: OPERAND
+
+inp	 11 00  Loads USER INPUT value into accumulator
+out	 11 01  Outputs accumulator value
+hlt	 11 10  Stops the fetch decode execute cycle - end of code
