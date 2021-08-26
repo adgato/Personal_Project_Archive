@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>Rotatable Camera</h1>
+            <video style="width: 50%; border: 5px solid rgb(15, 15, 15);" controls> 
+                <source src="rotatable_camera.mp4">
+            </video>
+            
+            <p1><br>This project, although cool, was intended to be a POC, proving to myself it was possible for data from the camera to meaningfully influence the rotation of the EV3 motors.
+                <br>I will definitely develop this idea futher, but for now, I'll explain what the robot does:
+                <br><br>I'm using imageai's object detector to detect any humans in the frame of the camera. The centre of the human location box is calculated and the displacement is calculated
+                between this location and the centre of the camera. 
+                <br>The magnitude of rotation then applied to the yaw axis motor is directly proportional to the magnitude of the x-component of this displacement vector, and the direction of rotation is the
+                direction of the x-component of the displacement vector.
+                <br>The pitch axis motor isn't really neccessary, but it acts the same as the yaw axis motor, except using the y-component of the displacement vector.
+                <br><br>I included limits to the degrees of rotation the motors can turn, because otherwise they could potentially tangle the wires and grind if they get stuck.
+                <br><br><b>Click the code below to download the python file (and the model used by imageai for the human detection):</b>
+                <br>
+            </p1>
+            <img id="image" src="./rotatable_camera.png" onclick="document.location = './rotatable_camera.zip'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>The camera I'm using with the EV3</h1>
+            
+            <p1>To save me explaining for each EV3 project I use a camera for, I'll explain here.
+                I'm using a "hacked" YI-home camera, as this allows the camera to stream live footage onto a local server, from which I can grab images with python.
+                To do this, I followed a tutorial <a href="https://github.com/TheCrypt0/yi-hack-v4">here</a>.
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
