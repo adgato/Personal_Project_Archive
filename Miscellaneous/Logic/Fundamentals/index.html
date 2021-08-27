@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 0, 255); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Computer"> <div class="Option">Computer</div></a>
+        <a href="./Fundamentals"> <div class="Option">Fundamentals</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>Logic gates</h1>
+
+            <p1>I used transistors, resistors and diodes to create all the logic gates.
+                <br>The AND gate is, counterintuitively, composed of a NAND gate into a NOT gate.
+                <br>The XNOR gate is composed of an OR and NAND gate into a NAND gate.
+                <br>The XOR gate is, counterintuitively, composed of an XNOR gate into a NOT gate.
+                <br><br>These were the logic gates I used in my 3-bit adder, below. 
+                <br>When I made my 2-bit adder, which I made last year in Feburary, I used bigger versions of the same gates.
+
+                <br><br><b>Click the circuit below to open it online:</b>
+                <br>
+            </p1>
+            <img id="image" src="./Logic gates.png" onclick="document.location = 'https://tinyurl.com/yju6gwxr'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>3-bit Adder</h1>
+
+            <p1>Coming back to my 2-bit adder to document it here inspired me to create a better version, as I was not quite satisfied with my first attempt.
+                <br>So, I spent the best part of today and yesterday creating the logic gates for the adder (above) and the adder ( ＾v＾)
+                <br>Although a little frustrating at times, this was incredibly enjoyable to create - I really love problem solving like this!
+                <br>Note: I could've used a half-adder to add the first two bits, like I did for the 2 bit adder, but using 3 full adders made the circuit look neater.
+
+                <br><br><b>Click the circuit below to open it online:</b>
+                <br>
+            </p1>
+            <img id="image" src="./3 bit adder.png" onclick="document.location = 'https://tinyurl.com/yfu5q5kt'"></img>
+        </div>
+        <div class="InfoBox">
+            <h1>2-bit Adder</h1>
+
+            <p1>For reference, I made this in Feburary 2020. 
+                <br>I don't really have much else to say :), the gate architecture is the same as above (apart from the half adder)
+                
+                <br><br><b>Click the circuit below to open it online:</b>
+                <br>
+            </p1>
+            <img id="image" src="./2 bit adder.png" onclick="document.location = 'https://tinyurl.com/yfxjydf3'"></img>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
