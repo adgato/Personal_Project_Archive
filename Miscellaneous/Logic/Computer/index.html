@@ -61,7 +61,7 @@
         </div>
         <div class="InfoBox">
             <h1>Central Processing Unit</h1>
-            <img src="./CPU.png" style="border: 5px solid rgb(15, 15, 15);"></img>
+            <img src="./CPU.png" style="max-width: 100%; border: 5px solid rgb(15, 15, 15);"></img>
 
             <p1><br>Consists of the CU, ALU, MAR, accumulator and variable storer.
                 <br>What a mess of cables! The command from the cache is sent directly to the CU, where it is decoded and an intruction is sent to execute the command somewhere else in the CPU.
@@ -69,7 +69,7 @@
         </div>
         <div class="InfoBox">
             <h1>Cache</h1>
-            <img src="./Cache.png" style="border: 5px solid rgb(15, 15, 15);"></img>
+            <img src="./Cache.png" style="max-width: 100%; border: 5px solid rgb(15, 15, 15);"></img>
 
             <p1><br>Consists of the 16 units which output their value if they recieve their address from the MAR.
                 <br>Wiring those cables was probably the most tedious thing I have ever done! It took hours, and I couldn't get any of it wrong else spend hours figuring out where! 
@@ -77,14 +77,14 @@
         </div>
         <div class="InfoBox">
             <h1>Control Unit</h1>
-            <img src="./CU.png" style="border: 5px solid rgb(15, 15, 15);"></img>
+            <img src="./CU.png" style="max-width: 100%; border: 5px solid rgb(15, 15, 15);"></img>
 
             <p1><br>Tasked with decoding the command sent from cache.
             </p1>
         </div>
         <div class="InfoBox">
             <h1>Arithmetic Logic Unit</h1>
-            <img src="./ALU.png" style="border: 5px solid rgb(15, 15, 15);"></img>
+            <img src="./ALU.png" style="max-width: 100%; border: 5px solid rgb(15, 15, 15);"></img>
 
             <p1><br>Consists of a full adder and a full subtracter model. I'm not going to explain how the adders and subtracters, as the algorithm's are pretty common - although as I said
                 I came up with them myself, and then optimised them based off of internet results... I'm not a cheater!
@@ -93,7 +93,7 @@
         </div>
         <div class="InfoBox">
             <h1>Variable Storage</h1>
-            <img src="./Variables.png" style="border: 5px solid rgb(15, 15, 15);"></img>
+            <img src="./Variables.png" style="max-width: 100%; border: 5px solid rgb(15, 15, 15);"></img>
 
             <p1><br>Another mess, I'm not very good at cable management am I? :D
                 <br>6 variables can be stored here.
@@ -101,7 +101,7 @@
         </div>
         <div class="InfoBox">
             <h1>Memory Address Reader</h1>
-            <img src="./MAR.png" style="border: 5px solid rgb(15, 15, 15);"></img>
+            <img src="./MAR.png" style="max-width: 100%; border: 5px solid rgb(15, 15, 15);"></img>
 
             <p1><br>Each time the clock button is turned on then off, the value outputted by the MAR increments by one, making cache output the next command to the CU.
                 <br>If the CPU is instructed to halt, via the command hlt, the MAR is prevented from incrementing it's value.
