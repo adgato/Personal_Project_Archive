@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(255, 102, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>Feynman Diagram</h1>
+            <img src="./feynmann diagram.png" style="max-width: 50%; border: 5px solid rgb(15, 15, 15);"></img>
+            <br><img src="./feynmann diagram2.png" style="max-width: 50%; border: 5px solid rgb(15, 15, 15);"></img>
+            <br><img src="./feynmann diagram3.png" style="max-width: 50%; border: 5px solid rgb(15, 15, 15);"></img>
+            
+            <p1><br>Inspired by <a href="https://www.youtube.com/watch?v=X-FEU4mQWtE">ScienceClic's video on feynman diagrams</a>, I decided to write my own program that would randomly generate them.
+                <br>I guess I was inspired by their simplicity in a mathematically complex field of physics - they gave me meaningful insight about virutal particles, and how our universe
+                operates on a fundamental level.
+                <br><br>Although my program is not mathematically accurate, I have followed the rules to generate a feynman diagram: I ensured my program obeyed the conservation of charge and momentum
+                (or at least the conservation of momentum is close enough, I found if I allowed lines with steep graidents, it made the diagrams look messy [see code line 124]).
+                <br>The x-axis represents a temporal dimension, the y-axis a spatial dimension.
+
+                <br><br><b>Click the code below to download the python file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./feynman diagram code.png" onclick="document.location = './feynman diagram.py'"></img>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>

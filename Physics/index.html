@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(255, 102, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Feynman Diagram"> <div class="Option">Feynman Diagram</div></a>
+
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>How to navigate the xandprojects/Physics page:</h1>
+            
+            <p1>Well, relative to me, the physics related projects are listed on the left of the screen, however, relative to my reflection, they're on the right.
+                <br>Now you know if you're in a mirror or not :)
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>Why I am passionate about physics:</h1>
+            
+            <p1>Good question Adam! 
+                <br><br>• My passion for physics is of the same nature as my interest in philosophy - I love asking deep, fundamental questions; and reasoning to find potential answers.
+                <br><br>• Additionally, like computer science, I enjoy the problem solving and mathematical aspect of the subject.
+                <br><br>• My primary reason for loving physics is because the subject of physics is concerned with the fundamental questions
+                about reality: Why are things as they are? Why are we here? Although we haven't found any fundamental answers, and probably will never,
+                addressing these deep, philosophical questions feels vital to the progression of humanity, vital to our appreciation for existance, 
+                vital to our outlook on life.
+                <br><br>• The revolutionary history of physics, the beautiful equations that govern our reality and the vital questions still left unanswered
+                make physics, to me, seem like the most romantic, important and fundamentally human field of science - (the field of machine learning is perhaps the only field
+                that contests with fundamental physics in terms of deep, philosphoical and human importance). 
+                <br>As Richard Feynman said: "Physics is like sex: sure, it may give some practical results, but that's not why we do it."
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
