@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(255, 102, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>Fourier Transform</h1>
+            <video style="width: 75%; border: 5px solid rgb(15, 15, 15);" controls> 
+                <source src="fourier.mp4">
+            </video>
+            
+            <p1>Inspired by <a href="https://www.youtube.com/watch?v=r6sGWTCMz2k">3b1b's video</a>, I decided to see if I could make a fourier transformer myself in python.
+                <br>I strongly recommend watching it yourself, one because it's fascinating, and two to understand how my code works.
+                <br>I'd watched 3b1b's videos on integration and complex numbers before hand, but this was the first time I had actually used them.
+                <br>I have to say, maths is probably the purest, most beautiful and elegent subject there is :)
+
+                <br><br><b>Click the code below to download the python file:</b>
+                <br>
+            </p1>
+            <img id="image" src="./pitch detector.png" onclick="document.location = './pitch detector.zip'"></img>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>

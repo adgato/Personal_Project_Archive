@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(255, 102, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Fourier Transform"> <div class="Option">Fourier Transform</div></a>
+
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>How to navigate the xandprojects/Maths page:</h1>
+            
+            <p1>Projects on the left. Click on them. Then there may be sections of the project on the left, depending on the size of the project.
+                <br>Okay?
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>About my interest in maths:</h1>
+            
+            <p1>Good question Adam!
+                This is an interesting one, I think of maths as a vital tool for phyiscs, computer science, and any places in my life where I have any problems really.
+                <br>• I enjoy maths, but I only see it as a tool; sometimes the mathematics is useful to discover more mathematics - a toolkit that grows by itself - and that is
+                useful too, because a larger toolkit can enable solutions to more problems.
+                <br>Therefore I am interseted in maths, because it is fun and enjoyable, and useful in many ways for my other passions :D
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
