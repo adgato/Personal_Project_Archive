@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(102, 255, 0); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+        
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        <a href="./Version 2"> <div class="Option">Version 2</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+        <div class="InfoBox">
+            <h1>About: PAs</h1>
+            
+            <p1> I think I made my first personal assistant after watching Iron Man and seeing JARVIS. In fact, JARVIS might be part of the reason 
+                I am passionate about AI, how cool would it be to have an assistant like JARVIS? 
+                <br>I decided the name Trillian was suitable for a personal assistant, and intend to use it for each version I make.
+                <br>Versions 1 and 2 are pretty basic, and more so just me experimenting with libraries in python, but I spent quite a while making them and wouldn't want to forget
+                about them, so I'll include on this website :D I shouldn't need to justify why I did something to myself or to you, but I just did, oh well...
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>Version 1</h1>
+            
+            <p1>My version 1 personal assistant was a concatenation of a lot of unique, novel, in principle helpful but not in practice, features; as well as a primitive NLP.
+                The project was still cool to me at the time, and helped me learn how to import and use python libraries, this was the first time I had done this.
+
+                <br><br>I would like to return to the world of NLPs in the future, perhaps I'll make or utilise a better one for my next PA - Version 3
+
+                <br><br>There is over 19kB of code, and I'm not going to screenshot it all, instead you can download it <a href="Version 1.zip">here</a>, if that's alright :)
+                <br>Also, I'm very doubtful all of it still works... (v _ v)
+                <br>Also, I copied most of this description from Version 2. The projects were pretty similar in nature and shared a few features :)
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>Version 2: First discord bot</h1>
+            
+            <p1>My version 2 personal assistant was another concatenation of a lot of unique, novel, in principle helpful but not in practice, features.
+                The project was still cool to me at the time, and helped me learn how to use multiprocessing and the discord API - this was the first time I used these.
+
+                <br>There is over 17kB of code, and I'm not going to screenshot it all, instead you can download it <a href="Version 2.zip">here</a>, if that's alright :)
+                <br>Also, I'm very doubtful it still works...
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
