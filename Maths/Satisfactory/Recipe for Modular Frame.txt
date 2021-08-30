@@ -1,0 +1,115 @@
+
+
+ Recipe to produce: Modular Frame (Required to produce What You Wanted)
+
+ 3.0x Reinforced Iron Plate + 12.0x Iron Rod --> 2.0x Modular Frame
+
+ For this you will need 15.0 Assemblers to convert: 
+    45.0x Reinforced Iron Plate
+    180.0x Iron Rod
+ Into 30x Modular Frame per minuite
+
+========================================================================================================================================================================================================
+
+
+ Recipe to produce: Reinforced Iron Plate (Required to produce Modular Frame)
+
+ 18.8x Iron Plate + 37.5x Wire --> 5.6x Reinforced Iron Plate
+
+ For this you will need 8.04 Assemblers to convert: 
+    151.15x Iron Plate
+    301.5x Wire
+ Into 45.0x Reinforced Iron Plate per minuite
+
+
+ Recipe to produce: Iron Rod (Required to produce Modular Frame)
+
+ 15.0x Iron Ingot --> 15.0x Iron Rod
+
+ For this you will need 12.0 Constructors to convert: 
+    180.0x Iron Ingot
+ Into 180.0x Iron Rod per minuite
+
+========================================================================================================================================================================================================
+
+
+ Recipe to produce: Iron Plate (Required to produce Reinforced Iron Plate --> Modular Frame)
+
+ 30.0x Iron Ingot --> 20.0x Iron Plate
+
+ For this you will need 7.56 Constructors to convert: 
+    226.8x Iron Ingot
+ Into 151.15x Iron Plate per minuite
+
+
+ Recipe to produce: Wire (Required to produce Reinforced Iron Plate --> Modular Frame)
+
+ 12.5x Iron Ingot --> 22.5x Wire
+
+ For this you will need 13.4 Constructors to convert: 
+    167.5x Iron Ingot
+ Into 301.5x Wire per minuite
+
+
+ Recipe to produce: Iron Ingot (Required to produce Iron Rod --> Modular Frame)
+
+ 30.0x Iron Ore --> 30.0x Iron Ingot
+
+ For this you will need 6.0 Smelters to convert: 
+    180.0x Iron Ore
+ Into 180.0x Iron Ingot per minuite
+
+========================================================================================================================================================================================================
+
+
+ Recipe to produce: Iron Ingot (Required to produce Iron Plate --> Reinforced Iron Plate --> Modular Frame)
+
+ 30.0x Iron Ore --> 30.0x Iron Ingot
+
+ For this you will need 7.56 Smelters to convert: 
+    226.8x Iron Ore
+ Into 226.8x Iron Ingot per minuite
+
+
+ Recipe to produce: Iron Ingot (Required to produce Wire --> Reinforced Iron Plate --> Modular Frame)
+
+ 20.0x Iron Ore + 20.0x Copper Ore --> 50.0x Iron Ingot
+
+ For this you will need 3.35 Foundry to convert: 
+    67.0x Iron Ore
+    67.0x Copper Ore
+ Into 167.5x Iron Ingot per minuite
+
+
+ Recipe to produce: Iron Ore (Required to produce Iron Ingot --> Iron Rod --> Modular Frame)
+ --> 240x Iron Ore
+
+ For this you will need 0.75 Miner Mk.3s to extract: 
+ 180.0x Iron Ore per minuite
+
+========================================================================================================================================================================================================
+
+
+ Recipe to produce: Iron Ore (Required to produce Iron Ingot --> Iron Plate --> Reinforced Iron Plate --> Modular Frame)
+ --> 240x Iron Ore
+
+ For this you will need 0.95 Miner Mk.3s to extract: 
+ 226.8x Iron Ore per minuite
+
+
+ Recipe to produce: Iron Ore (Required to produce Iron Ingot --> Wire --> Reinforced Iron Plate --> Modular Frame)
+ --> 240x Iron Ore
+
+ For this you will need 0.28 Miner Mk.3s to extract: 
+ 67.0x Iron Ore per minuite
+
+
+ Recipe to produce: Copper Ore (Required to produce Iron Ingot --> Wire --> Reinforced Iron Plate --> Modular Frame)
+ --> 240x Copper Ore
+
+ For this you will need 0.28 Miner Mk.3s to extract: 
+ 67.0x Copper Ore per minuite
+
+========================================================================================================================================================================================================
+
+========================================================================================================================================================================================================

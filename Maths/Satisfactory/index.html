@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(255, 0, 102); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+        
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>Satisfactory factory generator</h1>
+            <img src="./satisfactoryGame.jpg" style="max-width: 75%; border: 5px solid rgb(15, 15, 15);"></img>
+            
+            <p1><br>I think this code might be the definition of optimising the fun out of a game...
+                <br>(Initially, this was in the miscellaneous section, but I think because the only thing the program is essentially doing is calculating production line rates and requirements,
+                it qualifies as a mathematical project)
+                <br>Satisfactory is a game about creating production lines that will produce resources for you, which you can use
+                to upgrade your production line to produce materials faster.
+                <br>However, oftentimes, I don't want to commit to any specific production line, because I know there may be a more efficient
+                one I haven't thought of that I should use.
+                <br><br>This code was my attempt at a solution to this problem. You enter the product you want to make, and the rate you want to make it at 
+                as well as any limits on the number of resources you are willing to extract from the earth per minute to create said product.
+                <br>Because Satisfactory is a well designed game, there are countless recipes for any specific product. So, my program randomly finds
+                up to 5 different recipes at a time (it can be run again if they are not <i>satisfactory</i> recipes).
+                <br><br>The program then gives the user clear instructions on exactly how they should construct their factory, based off of their chosen recipe.
+                <br>I was more than <i>satisfied</i> with the code I wrote, I found it very helpful for the planning phase of my factory construction,
+                although as with all code I write for automation, I probably would have saved time by instead thinking for myself... (v _ v)
+                <br>In retrospect, the program was a kind of meta automation: automating the process of building a factory which purpose is to automate the production line; neat ( ＾v＾)
+                <br><br>Here is <a href="Recipe for Modular Frame.txt">an example recipe</a>.
+                
+                <br><br><b>Click the code below to download the python file (and the txt files which list every statistic relevant to factory making):</b>
+                <br>
+            </p1>
+            <img id="image" src="./satisfactory.png" onclick="document.location = './satisfactory.zip'"></img>
+            </p1>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+</body>
+
+</html>
