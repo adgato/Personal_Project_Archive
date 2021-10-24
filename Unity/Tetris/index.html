@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="/include/favicon.ico" />
+    <link rel="stylesheet" href="/include/styles.css" />
+    <style>
+    :root { --theme: rgb(0, 102, 255); }
+    </style>
+</head>
+
+<body onload="hideSlider()" style="overflow: hidden; height: 100%; width: 100%;">
+
+    <canvas id="canv" position="absolute"></canvas>
+
+    <div id="MenuBar" onmousemove="moveSlider(event)" onmouseleave="hideSlider()">
+        <a href="/"> 
+            <img id="logo" src="/include/logo.png" width="100%" style="position: absolute; top: 10px; left: 2%"></img>
+            <img id="logohover" width="100%" style="position: absolute; top: 10px; left: 2%"></img> 
+        </a>
+        <div id="Highlight"></div>
+        <div id="Slider"></div>
+
+        <a href="javascript:getGitURL()"> <div class="Option">GitHub</div></a>
+        <a href="javascript:getBackURL()"> <div class="Option">Back</div></a>
+    </div>
+
+    <div id="PageInfo">
+
+        <div class="InfoBox">
+            <h1>About: Tetris</h1>
+
+            <p1>I wanted to make Tetris, so I did ( ＾v＾)
+                <br>Got to do something to pass the time in Computer Science...
+                <br><br>Anyway, I'm pleased with the result :D 
+                <br>I added the ability to hold a block & fast drop, as well as my own version of the scoring system.
+                <br><br><b>Click the code <a onclick="document.location = './TheGame.cs'">here</a> to download the main C# file:</b>
+                <br><b>Click the code <a onclick="document.location = './ToggleMusic.cs'">here</a> to download the music toggle C# file:</b>
+                <br>Normally, I'd show screenshots of the code, but I wrote practically all the code in one file which is 24kB and I'm not concatinating <i>that</i> into one image!
+            </p1>
+        </div>
+        <div class="InfoBox">
+            <h1>Play: Tetris</h1>
+
+            <p1> Below is an online version of 'Tetris'. Alternatively, the executable version is linked <a href="./Tetris executable.zip">here</a>.
+                <br>I have also linked the Unity project files for Tetris (which you can move into a Unity project for yourself) 
+                <a href="https://drive.google.com/file/d/1T3PAhWthAV5oF1F8qVkbl8I8QLR33hLQ/view?usp=sharing">here</a>. 
+                If this does not work for whatever reason, please inform me via my <a href="mailto:xandprojects@gmail.com">email</a>.
+                <br><br><b>Click the image to start, you can make the game full-screen by pressing the full-screen button :)</b>
+                <br>Enjoy!
+            </p1>
+            <div class="webgl-content">
+                <div id="unityContainer" style="width: 100%;">
+                <img id="image" src="./include/thumbnail.png" onclick="unityInstance = UnityLoader.instantiate('unityContainer', './include/Build/Tetris.json'); document.getElementsByClassName('webgl-content').muted = true;" style="width: 100%;"></img>
+                </div>
+                <img id="image" src="./include/fullscreen.png" style="width: 38px;" onclick="unityInstance.SetFullscreen(1)"></img>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="HideContents" onclick="toggleContents()">&lt;</div>
+
+    <div id="Contents"> <h1 id="text">Contents:</h1><p1 id="text">Click to jump to chapter:<br><wbr></p1> </div>
+
+    <script src="/include/scripts.js"></script>
+    <script src="./include/Build/UnityLoader.js"></script>
+</body>
+
+</html>
