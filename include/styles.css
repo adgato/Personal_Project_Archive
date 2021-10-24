@@ -55,13 +55,13 @@ div.Option {
     text-align: center;
     font-family: consolas_;
     font-size: 200%;
-    color: rgb(112, 112, 112);
+    color: rgb(200, 200, 200);
     left: 0px;
     user-select: none;
 } div.Option:hover { 
     color: var(--theme); 
     cursor: pointer;
-}
+} 
 
 #Slider {
     position: absolute;
@@ -88,14 +88,14 @@ div.Option {
     left: 15%;
     width: 85%;
     height: 100%;
-    color:  rgb(212, 212, 212);
+    color:  rgb(200, 200, 200);
     font-family: hurme_;
     overflow: auto;
     transition: width 0.3s ease-in-out;
 } 
 #PageInfo::-webkit-scrollbar { width: 10px; } 
 #PageInfo::-webkit-scrollbar-track { background: rgb(30, 30, 30); } 
-#PageInfo::-webkit-scrollbar-thumb { background: rgb(112, 112, 112); }
+#PageInfo::-webkit-scrollbar-thumb { background: rgb(200, 200, 200); }
 #PageInfo::-webkit-scrollbar-thumb:hover { background: var(--theme); }
 
 div.InfoBox {
@@ -106,7 +106,7 @@ div.InfoBox {
     width: 90%;
     border-radius: 15px 0px 0px 15px;
     background: rgba(20, 20, 20, 0.95);
-    color:  rgb(112, 112, 112);
+    color:  rgb(200, 200, 200);
 }
 
 #text  { margin-left: 10px; }
@@ -118,13 +118,6 @@ div.InfoBox {
     border: 5px solid var(--theme);
     cursor: pointer;
 }
-#pdf {
-    width: 80%;
-    height: 0px; 
-}
-#copy:hover span    { display: none; }
-#copy:hover:before  { content: "Copy path to clipboard"; }
-#copy:active:before {  color: rgb(0, 100, 200); }
 
 #HideContents {
     position: absolute;
@@ -150,7 +143,7 @@ div.InfoBox {
     width: 15%;
     height: 100%;
     background: rgba(20, 20, 20, 0.95);
-    color:  rgb(112, 112, 112);
+    color:  rgb(200, 200, 200);
     font-family: consolas_;
     font-size: 0.9vw;
     transition: left 0.3s ease-in-out;
@@ -159,7 +152,7 @@ div.InfoBox {
 div.Chapter {
     margin-bottom: 15px;
     margin-left: 5%;
-    color: rgb(112, 112, 112);
+    color: rgb(200, 200, 200);
     user-select: none;
 } div.Chapter:hover  { 
     color: var(--theme);  
