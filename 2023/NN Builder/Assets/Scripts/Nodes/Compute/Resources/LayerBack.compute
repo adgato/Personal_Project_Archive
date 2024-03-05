@@ -1,0 +1,64 @@
+#pragma kernel BackPropagate
+#include "MatLib.cginc"
+
+StructuredBuffer<float> outputCostPrime;
+RWStructuredBuffer<float> inputCostPrime;
+RWStructuredBuffer<float> weights;
+RWStructuredBuffer<float> bias;
+StructuredBuffer<float> currentOutput;
+StructuredBuffer<float> currentInput;
+
+const int inputSize;
+const int outputSize;
+const int activationFunction;
+
+const int batchSize;
+const float learningRate;
+
+#define THREAD_COUNT 128
+groupshared float idBin[THREAD_COUNT];
+
+[numthreads(THREAD_COUNT, 1, 1)]
+void BackPropagate(uint3 id : SV_DispatchThreadID)
+{
+    const int outOffset = id.x * outputSize;
+    const int inOffset = id.x * inputSize;
+    
+    const float scale = learningRate / batchSize;
+    
+    for (int x = 0; x < outputSize; x++)
+    {
+        const float activationCostPrime = outputCostPrime[outOffset + x] * ActivationFunctionPrime(currentOutput[outOffset + x], activationFunction);
+        const float xOffset = x * inputSize;
+        
+        idBin[id.x] = activationCostPrime;
+        GroupMemoryBarrierWithGroupSync();
+        for (int k = THREAD_COUNT >> 1; k > 0; k >>= 1)
+        {
+            if ((int) id.x < k)
+                idBin[id.x] += idBin[id.x + k];
+            GroupMemoryBarrierWithGroupSync();
+        }
+        if (id.x == 0)
+            bias[x] -= idBin[0] * scale;
+            
+        for (int i = 0; i < inputSize; i++)
+        {
+            if (x == 0)
+                inputCostPrime[inOffset + i] = weights[i] * activationCostPrime;
+            else
+                inputCostPrime[inOffset + i] += weights[xOffset + i] * activationCostPrime;
+                    
+            idBin[id.x] = currentInput[inOffset + i] * activationCostPrime;
+            GroupMemoryBarrierWithGroupSync();
+            for (int k = THREAD_COUNT >> 1; k > 0; k >>= 1)
+            {
+                if ((int) id.x < k)
+                    idBin[id.x] += idBin[id.x + k];
+                GroupMemoryBarrierWithGroupSync();
+            }
+            if (id.x == 0)
+                weights[xOffset + i] -= idBin[0] * scale;
+        }
+    }
+}
