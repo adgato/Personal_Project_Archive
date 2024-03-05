@@ -1,0 +1,39 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel UpdateStars
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+StructuredBuffer<float3> starPosRelativeToGalaxy;
+StructuredBuffer<float> starSphereRadii;
+RWStructuredBuffer<float3> starRenderPos;
+RWStructuredBuffer<float> starRenderLocalScaleX;
+
+float numStars;
+float3 galaxyCentre;
+float minAt1Dist;
+float renderDistance;
+float4x4 cameraMatrix;
+
+float GetCircleStarScale(float starRadius, float sqrStarDist)
+{
+    float horizonRadius = max(minAt1Dist, sqrt(sqrStarDist - starRadius * starRadius) * starRadius / sqrStarDist);
+    
+    return 2 * horizonRadius * renderDistance;
+}
+
+[numthreads(128, 1, 1)]
+void UpdateStars(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= numStars)
+        return;
+    
+    float close01 = clamp(starRenderLocalScaleX[id.x] / 40000, 0, 1);
+    
+    float3 starPosRelativeToCamera = starPosRelativeToGalaxy[id.x] + galaxyCentre;
+    float sqrDistance = starPosRelativeToCamera.x * starPosRelativeToCamera.x + starPosRelativeToCamera.y * starPosRelativeToCamera.y + starPosRelativeToCamera.z * starPosRelativeToCamera.z;
+    
+    float horizonRadius = max(minAt1Dist, sqrt(sqrDistance - starSphereRadii[id.x] * starSphereRadii[id.x]) * starSphereRadii[id.x] / sqrDistance);
+    
+    starRenderLocalScaleX[id.x] = 2 * horizonRadius * (renderDistance - 1000 * close01);
+    starRenderPos[id.x] = normalize(starPosRelativeToCamera) * (renderDistance - 1000 * close01);
+}

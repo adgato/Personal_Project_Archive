@@ -1,0 +1,86 @@
+#pragma kernel GeneratePlanetNoise
+#include "Noise.cginc"
+
+const int numCraters;
+const float ctrSmoothness;
+const float ctrRimWidth;
+const float ctrRimSteepness;
+
+const int wOctaves;
+const float wScale;
+const float wPersistance;
+const float wLacunarity;
+
+const int cOctaves;
+const float cScale;
+const float cPersistance;
+const float cLacunarity;
+const float cDropoff;
+
+const int mOctaves;
+const float mScale;
+const float mPersistance;
+const float mLacunarity;
+const float mDropoff;
+const int mInitialExtraOctaves;
+
+const int rOctaves;
+const float rPersistance;
+const float rLacunarity;
+const float rStartingOctave;
+
+const float groundLevel;
+const float seabedLevel;
+const float radius;
+const bool roughBed;
+const bool crackedGround;
+
+const int vertexCount;
+
+StructuredBuffer<Craters> craters;
+
+StructuredBuffer<float3> cOffsets;
+StructuredBuffer<float3> mOffsets;
+StructuredBuffer<float3> wOffsets;
+StructuredBuffer<float3> rOffsets;
+
+RWStructuredBuffer<float> rwWorldHeight;
+RWStructuredBuffer<float3> rwVerts;
+
+[numthreads(256,1,1)]
+void GeneratePlanetNoise(uint3 id : SV_DispatchThreadID)
+{
+    if ((int) id.x > vertexCount)
+        return;
+    
+    if (length(rwVerts[id.x]) != 1.0f)
+        rwVerts[id.x] = normalize(rwVerts[id.x]);
+    
+    rwVerts[id.x] *= radius / 500;
+
+    const float3 warpMap = GenerateWarpMap(rwVerts[id.x], wPersistance, wLacunarity, wScale, wOctaves, wOffsets);
+    
+    const float cHeight = GenerateContinents(rwVerts[id.x], cPersistance, cLacunarity, cScale, cOctaves, cOffsets, cDropoff, groundLevel, seabedLevel, warpMap);
+    
+    const float mHeight = GenerateMountains(rwVerts[id.x], mPersistance, mLacunarity, mScale, mOctaves, mOffsets, mDropoff, mInitialExtraOctaves, groundLevel, seabedLevel);
+
+    const float ctrHeight = GenerateCraters(rwVerts[id.x], ctrRimWidth, ctrRimSteepness, ctrSmoothness, numCraters, craters, radius);
+    
+    float minLevel;
+    if (roughBed)
+        minLevel = GenerateRoughTerrain(rwVerts[id.x], rPersistance, rLacunarity, rOctaves, rOffsets, rStartingOctave);
+    else
+        minLevel = seabedLevel;
+
+    float worldHeight = max(max(cHeight, mHeight), minLevel);
+
+    if (crackedGround && abs(PerlinNoise3D(rwVerts[id.x] * 3)) < 0.03)
+        worldHeight = lerp(seabedLevel * minLevel, worldHeight, pow(abs(PerlinNoise3D(rwVerts[id.x] * 3)) / 0.03, 0.5));
+        
+    
+    worldHeight += ctrHeight;
+    worldHeight *= radius;
+    
+    rwWorldHeight[id.x] = worldHeight;
+    rwVerts[id.x] = normalize(rwVerts[id.x]) * worldHeight;
+}
