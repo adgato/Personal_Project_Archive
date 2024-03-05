@@ -2,7 +2,7 @@
 An archive of favourite projects that I have worked on, at some point in the past. Projects may be missing large data files.
 
 ## 2024
-- CustomSRP - Ongoing - A [custom render pipeline](https://docs.unity3d.com/Manual/srp-custom.html) for Unity I am working on. Currently implemented a graphics buffer for deferred lighting, shadow volumes, cel shading and mirrors.
+- CustomSRP - Ongoing - A [custom render pipeline](https://docs.unity3d.com/Manual/srp-custom.html) for Unity I am working on. Currently used to implement deferred lighting, shadow volumes, cel shading and mirrors.
 
 ## 2023
 - Music Theory - Winter project - A system to produce customisable sound waves with a GUI that makes it easy to play notes and many chords in different modes of the diatonic scale, and other scales. The MIDI version outputs the sound on a MIDI channel.
