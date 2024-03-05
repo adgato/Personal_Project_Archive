@@ -1,0 +1,21 @@
+#pragma kernel CSMain
+#include "../SimplexNoise.cginc"
+#include "../Math.cginc"
+
+uint Dims;
+float Offset;
+float Scale;
+float PathWidth;
+uint Layers;
+RWTexture3D<float4> Result;
+
+[numthreads(4, 4, 4)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    if (any(id >= Dims))
+        return;
+
+    float value;
+    make_path_snoise_float(float3(id) / Dims, Offset, Scale, PathWidth, Layers, value);
+    Result[id.xyz] = value;
+}

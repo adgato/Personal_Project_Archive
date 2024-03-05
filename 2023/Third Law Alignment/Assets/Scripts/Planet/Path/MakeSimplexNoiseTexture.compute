@@ -1,0 +1,19 @@
+#pragma kernel CSMain
+#include "../SimplexNoise.cginc"
+
+
+uint Dims;
+float Offset;
+float Scale;
+RWTexture3D<float4> Result;
+
+[numthreads(4, 4, 4)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    if (any(id >= Dims))
+        return;
+
+    float value;
+    snoise_float(Scale * id / Dims + Offset, value);
+    Result[id.xyz] = value;
+}

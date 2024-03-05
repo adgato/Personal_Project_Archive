@@ -1,0 +1,164 @@
+#pragma kernel GrassField
+
+#include "../Math.cginc"
+
+#define tau 6.28318530718
+#define RAND_SIZE 101
+#define RAND_STEP 7
+#define SIZEOF_UINT 4
+#define SIZEOF_FLOAT3 12
+#define SIZEOF_FLOAT2 8
+
+StructuredBuffer<float3> Verts;
+StructuredBuffer<float> Values;
+StructuredBuffer<uint> TriangleID;
+
+StructuredBuffer<float3> GrassVerts; 
+StructuredBuffer<uint3> GrassTris; //
+StructuredBuffer<float2> GrassUVs; //
+
+uint grassVertsLength; //GrassTrisLength = GrassVertsLength - 2
+
+uint grassCount;
+
+uint fieldSeed;
+
+//
+// Output buffer and counter
+//
+
+RWByteAddressBuffer VertexBuffer;
+RWByteAddressBuffer IndexBuffer;
+RWStructuredBuffer<uint> Counter; // used only for counting
+
+// Vertex buffer accessor
+void WriteVertex(uint offset, float3 p, float3 n, float2 u)
+{
+    uint addr_p = offset * (SIZEOF_FLOAT3 * 2 + SIZEOF_FLOAT2);
+    uint addr_n = addr_p + SIZEOF_FLOAT3;
+    uint addr_u = addr_n + SIZEOF_FLOAT3;
+    VertexBuffer.Store3(addr_p, asuint(p));
+    VertexBuffer.Store3(addr_n, asuint(n));
+    VertexBuffer.Store2(addr_u, asuint(u));
+}
+void WriteIndices(uint offset, uint3 indices)
+{
+    IndexBuffer.Store3(offset * SIZEOF_UINT * 3, indices);
+}
+
+void WriteGrassBlade(uint count, float4x4 TRS, float3 n)
+{
+    uint vertOffset = count * grassVertsLength;
+    uint grassOffset = count * (grassVertsLength - 2);
+    for (uint i = 0; i < grassVertsLength; i++)
+    {
+        float3 p = mulTRS3x4(TRS, GrassVerts[i]);
+        WriteVertex(vertOffset + i, p, n, GrassUVs[i]);
+        if (i < grassVertsLength - 2)
+            WriteIndices(grassOffset + i, vertOffset + GrassTris[i]);
+    }
+}
+void WriteEmpty(uint count)
+{
+    uint vertOffset = count * grassVertsLength;
+    uint grassOffset = count * (grassVertsLength - 2);
+    for (uint i = 0; i < grassVertsLength; i++)
+    {
+        WriteVertex(vertOffset + i, 0, 0, 0);
+        if (i < grassVertsLength - 2)
+            WriteIndices(grassOffset + i, uint3(0, 0, 0));
+    }
+}
+
+uint xorshift(uint state)
+{
+    state ^= (state << 13);
+    state ^= (state >> 17);
+    state ^= (state << 5);
+    return state;
+}
+float rand01(uint seed)
+{
+    return Values[(seed * RAND_STEP) % RAND_SIZE];
+}
+
+float4x4 PositionMatrix(float3 p)
+{
+    return float4x4(
+        1.0, 0.0, 0.0, p.x,
+        0.0, 1.0, 0.0, p.y,
+        0.0, 0.0, 1.0, p.z,
+        0.0, 0.0, 0.0, 1.0);
+}
+
+float4x4 RotationMatrix(float3 toDirection, float localYawRadians)
+{
+    toDirection = normalize(toDirection);
+
+    float3 axis = normalize(float3(-toDirection.z, 0, toDirection.x));
+
+    float sinHalfAngle, cosHalfAngle, sinHalfYaw, cosHalfYaw;
+    sincos(0.5 * acos(toDirection.y), sinHalfAngle, cosHalfAngle);
+    sincos(0.5 * localYawRadians, sinHalfYaw, cosHalfYaw);
+
+    float4 rhs = float4(axis.x * sinHalfAngle, 0, axis.z * sinHalfAngle, cosHalfAngle);
+    float4 lhs = float4(0, sinHalfYaw, 0, cosHalfYaw);
+
+    
+    float4 q = float4(
+        lhs.w * rhs.x + lhs.x * rhs.w + lhs.y * rhs.z - lhs.z * rhs.y,
+        lhs.w * rhs.y + lhs.y * rhs.w + lhs.z * rhs.x - lhs.x * rhs.z,
+        lhs.w * rhs.z + lhs.z * rhs.w + lhs.x * rhs.y - lhs.y * rhs.x,
+        lhs.w * rhs.w - lhs.x * rhs.x - lhs.y * rhs.y - lhs.z * rhs.z);
+    
+    float x = q.x * 2.0;
+    float y = q.y * 2.0;
+    float z = q.z * 2.0;
+    float xx = q.x * x;
+    float yy = q.y * y;
+    float zz = q.z * z;
+    float xy = q.x * y;
+    float xz = q.x * z;
+    float yz = q.y * z;
+    float wx = q.w * x;
+    float wy = q.w * y;
+    float wz = q.w * z;
+    
+    return float4x4(
+        1.0 - (yy + zz), xy + wz, xz - wy, 0.0,
+        xy - wz, 1.0 - (xx + zz), yz + wx, 0.0,
+        xz + wy, yz - wx, 1.0 - (xx + yy), 0.0,
+        0.0, 0.0, 0.0, 1.0);
+}
+
+[numthreads(64, 1, 1)]
+void GrassField(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= grassCount)
+        return;
+    
+    uint i = TriangleID[id.x];
+    
+    float3 v0 = Verts[i];
+    float3 v1 = Verts[i + 1];
+    float3 v2 = Verts[i + 2];
+    float3 v01 = v1 - v0;
+    float3 v02 = v2 - v0;
+    
+    uint seed = fieldSeed + 3 * id.x;
+        
+    float a01 = rand01(seed);
+    float b01 = rand01(seed + 1);
+    float3 p = v0;
+    if (a01 + b01 < 1)
+        p += v01 * a01 + v02 * b01;
+    else
+        p += v01 * (1 - a01) + v02 * (1 - b01);
+        
+    float4x4 T = PositionMatrix(p);
+    float4x4 R = RotationMatrix(p, rand01(seed + 2) * tau);
+        
+    float3 n = normalize(R._13_23_33); //mul(R, float4(0, 0, 1, 0)).xyz
+        
+    WriteGrassBlade(id.x, mul(T, R), n);
+}

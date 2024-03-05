@@ -1,0 +1,152 @@
+#pragma kernel VoxelGeneration
+#include "../SimplexNoise.cginc"
+#include "../Math.cginc"
+
+struct NoiseParams
+{
+    uint octaves;
+    float4 cutoff01; // x => min radius (noise = 0), y => min radius where noise unscaled, z => max radius where noise unscaled, w => max radius (noise = 0)
+
+    float persistance01; // scale the amplitude of each octave by this factor each octave
+    float frequency; // how fast the sample moves through noise space
+    float lacunarity; // scale the frequency by this factor each octave
+
+    float3 offset0; // applied to every octave
+    float3 offset1; // applied to every 3n + 0 octaves
+    float3 offset2; // applied to every 3n + 1 octaves
+    float3 offset3; // applied to every 3n + 2 octaves
+	
+	// remap the noise from y = x onto a line graph following these points:
+    float remap0; // (0, remap0)
+    float2 remap2; // (remap2.x, remap2.y) [0 < remap2.x < remap3.x]
+    float2 remap3; // and so on...
+    float2 remap4;
+    float2 remap5;
+    float remap1; // (1, remap1)
+	// could ignore this step by doing: remap0 = 0, remap[2,3,4,5] = (0,0), remap1 = 1
+};
+struct PathSegment
+{
+    float3 midPoint;
+    float3 direction;
+    float sqrRadius;
+};
+
+//1 is in, 0 is out
+RWStructuredBuffer<float> VoxelBuffer;
+uint VoxelsPerEdge;
+uint NoiseParamCount;
+uint PathSegmentCount;
+
+float OceanRadius01;
+float SampleRadius;
+
+StructuredBuffer<NoiseParams> ParamBuffer;
+StructuredBuffer<PathSegment> PathBuffer;
+
+float3 TransformPoint(float3 p)
+{
+    return lerp(-SampleRadius, SampleRadius, p / VoxelsPerEdge);
+}
+
+float Radius01(float3 p)
+{
+    return length(p) / SampleRadius;
+}
+
+float OctaveSnoise(float3 p, NoiseParams OP)
+{
+    if (OP.octaves == 0)
+        return 0.0;
+    
+    float noise01 = 0.0;
+    float amp = 1.0;
+    float freq = 1.0;
+    
+    float3 offsets[3];
+    offsets[0] = OP.offset1;
+    offsets[1] = OP.offset2;
+    offsets[2] = OP.offset3;
+
+    for (uint i = 0; i < OP.octaves; i++)
+    {
+        float3 sample = p * freq + offsets[i % 3] + OP.offset0;
+        
+        if (i == 0)
+            noise01 += 0.5 * (snoise(sample * OP.frequency) + 1.0);
+        else
+            noise01 += snoise(sample * OP.frequency) * amp;
+        
+        amp *= OP.persistance01;
+        freq *= OP.lacunarity;
+    }
+    return saturate(noise01);
+}
+
+float StepRemap(float t01, NoiseParams OP)
+{
+    if (t01 == 0.0)
+        return OP.remap0;
+    else if (t01 == 1.0)
+        return OP.remap1;
+    
+    float2 steps[6];
+    steps[0] = float2(0.0, OP.remap0);
+    steps[1] = OP.remap2;
+    steps[2] = OP.remap3;
+    steps[3] = OP.remap4;
+    steps[4] = OP.remap5;
+    steps[5] = float2(1.0, OP.remap1);
+    
+    for (int i = 1; i < 6; i++)
+    {
+        if (steps[i].x <= t01)
+            continue;
+        return remap(steps[i - 1].y, steps[i].y, steps[i - 1].x, steps[i].x, t01);
+    }
+    return OP.remap1;
+}
+
+float LimitRange(float noise, float radius01, float4 cutoffRadii01)
+{
+    if (radius01 < cutoffRadii01.z)
+        return remapClamp(0.0, noise, cutoffRadii01.x, cutoffRadii01.y, radius01);
+    else
+        return remapClamp(noise, 0.0, cutoffRadii01.z, cutoffRadii01.w, radius01);
+}
+
+float GenerateNoiseValue(float3 p, float radius01, NoiseParams OP)
+{
+    if (radius01 < OP.cutoff01.x || radius01 > OP.cutoff01.w)
+        return 0.0;
+    
+    float noise01 = OctaveSnoise(p, OP);
+    float noise = StepRemap(noise01, OP);
+    
+    return LimitRange(noise, radius01, OP.cutoff01);
+}
+
+
+[numthreads(4, 4, 4)]
+void VoxelGeneration(uint3 id : SV_DispatchThreadID)
+{
+    // Boundary check
+    if (any(id + 1 >= VoxelsPerEdge))
+        return;
+    uint idx = id.x + VoxelsPerEdge * (id.y + VoxelsPerEdge * id.z);
+
+    float3 p = TransformPoint(id);
+    float r = Radius01(p);
+    
+    float noise = 1;
+    if (r > OceanRadius01)
+    {
+        //Make planet terrain
+        noise = StepRemap(r + OctaveSnoise(p, ParamBuffer[0]) * 0.002 / ParamBuffer[0].frequency, ParamBuffer[0]); //define the inner core, ground and air regions
+        for (uint i = 1; i < NoiseParamCount; i++)
+            noise += GenerateNoiseValue(p, r, ParamBuffer[i]);
+    }
+
+    VoxelBuffer[idx] = saturate(noise);
+}
+

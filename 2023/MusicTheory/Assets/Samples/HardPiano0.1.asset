@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b1c417b4a72b04087a048e0a7b93b5, type: 3}
+  m_Name: HardPiano0.1
+  m_EditorClassIdentifier: 
+  sample: {fileID: 8300000, guid: 3d60115d9487bba478b11dc2cdcd95d8, type: 3}
+  fadeOutTime: 0.1
+  sampleNote:
+    chroma: 9
+    accidental: 0
+    octave: 4

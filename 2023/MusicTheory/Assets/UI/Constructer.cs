@@ -1,0 +1,1 @@
+public interface IConstructer<T> { public T Get(); }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d88c2b1cfb6aa4b850bb09b06bdaf8, type: 3}
+  m_Name: CRPAsset
+  m_EditorClassIdentifier: 
+  EditorShowSceneViewGizmos: 0
+  EditorShowGameViewGizmos: 0
+  DrawPasses:
+  - {fileID: 11400000, guid: b7cde488e895cfa478e6a149ac02ec86, type: 2}
+  LayerSchema: {fileID: 11400000, guid: 788e7fc2266620040a6bf9db85c0b6a0, type: 2}
+  BlitPasses:
+  - {fileID: 11400000, guid: cd8fb5478d7480d449ec0e6815ca52b2, type: 2}
+  dLightWatcher: {fileID: 11400000, guid: ff9f56c28954bcf498abb008d88b90a2, type: 2}
+  pLightWatcher: {fileID: 11400000, guid: be4598c64eb7e1e4bae21aac71270cf5, type: 2}

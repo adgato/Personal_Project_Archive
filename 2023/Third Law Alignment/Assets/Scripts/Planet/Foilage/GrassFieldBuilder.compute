@@ -1,0 +1,121 @@
+#pragma kernel GrassField
+
+#include "../Math.cginc"
+
+#define tau 6.28318530718
+
+RWStructuredBuffer<float4x4> TRSBuffer;
+StructuredBuffer<float3> Verts;
+
+RWStructuredBuffer<uint> Counter; // used only for counting
+
+float dotCutoff;
+uint maxGrassPerTriangle;
+float grassPerUnitArea;
+
+float fieldSeed;
+
+
+uint xorshift(uint state)
+{
+    state ^= (state << 13);
+    state ^= (state >> 17);
+    state ^= (state << 5);
+    return state;
+}
+float rand01(float seed)
+{
+    return frac(sin(seed + fieldSeed) * 43758.5453);
+}
+
+float4x4 PositionMatrix(float3 p)
+{
+    return float4x4(
+        1.0, 0.0, 0.0, p.x,
+        0.0, 1.0, 0.0, p.y,
+        0.0, 0.0, 1.0, p.z,
+        0.0, 0.0, 0.0, 1.0);
+}
+
+float4x4 RotationMatrix(float3 toDirection, float localYawRadians)
+{
+    toDirection = normalize(toDirection);
+
+    float3 axis = normalize(float3(-toDirection.z, 0, toDirection.x));
+
+    float sinHalfAngle, cosHalfAngle, sinHalfYaw, cosHalfYaw;
+    sincos(0.5 * acos(toDirection.y), sinHalfAngle, cosHalfAngle);
+    sincos(0.5 * localYawRadians, sinHalfYaw, cosHalfYaw);
+
+    float4 rhs = float4(axis.x * sinHalfAngle, 0, axis.z * sinHalfAngle, cosHalfAngle);
+    float4 lhs = float4(0, sinHalfYaw, 0, cosHalfYaw);
+
+    
+    float4 q = float4(
+        lhs.w * rhs.x + lhs.x * rhs.w + lhs.y * rhs.z - lhs.z * rhs.y,
+        lhs.w * rhs.y + lhs.y * rhs.w + lhs.z * rhs.x - lhs.x * rhs.z,
+        lhs.w * rhs.z + lhs.z * rhs.w + lhs.x * rhs.y - lhs.y * rhs.x,
+        lhs.w * rhs.w - lhs.x * rhs.x - lhs.y * rhs.y - lhs.z * rhs.z);
+    
+    /*float4 q = float4(
+        lhs.x * rhs.w - lhs.z * rhs.y,
+        lhs.w * rhs.y,
+        lhs.z * rhs.w + lhs.x * rhs.y,
+        lhs.w * rhs.w);*/
+    
+    float x = q.x * 2.0;
+    float y = q.y * 2.0;
+    float z = q.z * 2.0;
+    float xx = q.x * x;
+    float yy = q.y * y;
+    float zz = q.z * z;
+    float xy = q.x * y;
+    float xz = q.x * z;
+    float yz = q.y * z;
+    float wx = q.w * x;
+    float wy = q.w * y;
+    float wz = q.w * z;
+    
+    return float4x4(
+        1.0 - (yy + zz), xy + wz,         xz - wy,         0.0,
+        xy - wz,         1.0 - (xx + zz), yz + wx,         0.0,
+        xz + wy,         yz - wx,         1.0 - (xx + yy), 0.0,
+        0.0,             0.0,             0.0,             1.0);
+}
+
+[numthreads(64,1,1)]
+void GrassField(uint3 id : SV_DispatchThreadID)
+{
+    uint i = 3 * id.x;
+    
+    float3 v0 = Verts[i];
+    float3 v1 = Verts[i + 1];
+    float3 v2 = Verts[i + 2];
+    float3 v01 = v1 - v0;
+    float3 v02 = v2 - v0;
+    
+    float3 up = normalize(v0);
+    float3 normal = cross(v01, v02);
+    float twoArea = length(normal);
+    normal /= twoArea;
+    float gradient = min(1, invlerp(dotCutoff, 1, dot(normal, up)));
+    if (gradient < 0)
+        return;
+
+    uint blades = min(maxGrassPerTriangle, ceil(grassPerUnitArea * twoArea * gradient * lerp(0.5, 1, rand01(id.x)))); //rand01(id.x)
+
+    for (uint j = 0; j < blades; j++)
+    {
+        uint count = Counter.IncrementCounter();
+        
+        float a01 = rand01(3 * count);
+        float b01 = rand01(3 * count + 1);
+        float3 p = v0;
+        if (a01 + b01 < 1)
+            p += v01 * a01 + v02 * b01;
+        else
+            p += v01 * (1 - a01) + v02 * (1 - b01);
+        
+        TRSBuffer[count] = mul(PositionMatrix(p), RotationMatrix(p, rand01(3 * count + 2) * tau)); //quaternion(p, rand01(3 * count + 2) * tau)
+    }
+}

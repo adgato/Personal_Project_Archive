@@ -1,0 +1,20 @@
+{
+  "waves": [
+    {
+      "amplitude": 2,
+      "wavespeed": 5,
+      "wavelength": 25,
+      "damping": 0.0
+    }
+  ],
+  "vertexOffset": {
+    "amplidutde": {
+      "x": 1,
+      "y": 1
+    },
+    "speed": {
+      "x": 1,
+      "y": 1
+    }
+  }
+}
