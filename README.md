@@ -6,9 +6,9 @@ An archive of favourite projects that I have worked on, at some point in the pas
 
 ## 2023
 - Music Theory - Winter project - A system to produce customisable sound waves with a GUI that makes it easy to play notes and many chords in different modes of the diatonic scale, and other scales. The MIDI version outputs the sound on a MIDI channel.
-- Ray tracer - Coursework - Distributed ray tracer that handles reflection, refraction and texture mapping for primitive shapes.
+- Ray tracer - Coursework - Distributed ray tracer that handles reflection, refraction, and texture mapping for primitive shapes.
 - Bit Logic - Autumn project - A graph-based interface to create logic circuits from basic logical components. Can save logic circuits as procedures and insert them into more abstract circuits. Adapted from NN Builder (spring project).
-- Third Law Alignment  - Summer project - A procedural planet generation system detailed with prodedurally generated grass, trees, paths, and dynamic character animations and camera system capable of naturally traversing this terrain. An improved version of the systems in Third Law (2022), but with less extra features.
+- Third Law Alignment - Summer project - A procedural planet generation system detailed with procedurally generated grass, trees, paths, and dynamic character animations and camera system capable of naturally traversing this terrain. An improved version of the systems in Third Law (2022), but with less extra features.
 - NN Builder - Spring project - A graph-based interface to create neural networks from basic matrix operations, such as a feed forward layer or convolution, with implementations on CPU and GPU. Can save trained networks as procedures and insert them into other networks.
 
 ## 2022
