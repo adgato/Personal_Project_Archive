@@ -22,36 +22,36 @@ An archive of favourite projects that I have worked on, at some point in the pas
 
 ## Ray tracer
 
-![wet-cyberscape.png](wet-cyberscape.png)
+![wet-cyberscape.png](images/wet-cyberscape.png)
 *Ray tracer scene.*
-![wet-cyberscape.gif](wet-cyberscape.gif)
+![wet-cyberscape.gif](images/wet-cyberscape.gif)
 *Animated version.*
-
-## Finite Element Analysis
-
-![cubepress.png](cubepress.png)
-*Deformation example, pressing down in the centre of a cube.*
 
 ## Third Law Alignment
 
-![wedge.png](wedge.png)
+![wedge.png](images/wedge.png)
 *Showcasing grass and terrain.*
-![journey.png](journey.png)
+![journey.png](images/journey.png)
 *Showcasing tree generation.*
-![sunrise.png](sunrise.png)
+![sunrise.png](images/sunrise.png)
 *Showcasing atmosphere and ocean.*
+
+## Finite Element Analysis
+
+![cubepress.png](images/cubepress.png)
+*Deformation example, pressing down in the centre of a cube.*
 
 ## Bit logic
 
-![counter.gif](counter.gif)<br/>
+![counter.gif](images/counter.gif)<br/>
 *4-bit counter.*
 
 ## CustomSRP
 
-![mirrorshade.png](mirrorshade.png)
+![mirrorshade.png](images/mirrorshade.png)
 *Screenshot of game entry for game jam using the custom render pipeline.*
 
 ## Third Law
 
-![flyby.gif](flyby.gif)<br/>
+![flyby.gif](images/flyby.gif)<br/>
 *Planet exploration in Third Law.*
