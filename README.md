@@ -23,7 +23,7 @@ An archive of favourite projects that I have worked on, at some point in the pas
 ## Ray tracer
 
 ![wet-cyberscape.png](wet-cyberscape.png)
-*Ray tracer scene awarded first place in a competition held for Cambridge first year students of CS.*
+*Ray tracer scene.*
 ![wet-cyberscape.gif](wet-cyberscape.gif)
 *Animated version.*
 
