@@ -33,9 +33,13 @@ An archive of favourite projects that I have worked on, at some point in the pas
 *Showcasing grass and terrain.*
 ![journey.png](images/journey.png)
 *Showcasing tree generation.*
-![walking.mp4](images/walking.mp4)
+
+https://github.com/user-attachments/assets/4879f9d9-06ea-4efc-9455-389563ac8aec
+
 *Showcasing movement over terrain.*
-![fighting.mp4](images/fighting.mp4)
+
+https://github.com/user-attachments/assets/22048b55-0638-4296-b4be-da3f67f313bb
+
 *Showcasing movement during combat.*
 
 ## Finite Element Analysis
