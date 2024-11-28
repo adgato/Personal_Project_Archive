@@ -30,17 +30,17 @@ An archive of favourite projects that I have worked on, at some point in the pas
 ## Third Law Alignment
 
 ![wedge.png](images/wedge.png)
-*Showcasing grass and terrain.*
+*Screenshot showcasing grass and terrain.*
 ![journey.png](images/journey.png)
-*Showcasing tree generation.*
+*Screenshot showcasing tree generation.*
 
-https://github.com/user-attachments/assets/4879f9d9-06ea-4efc-9455-389563ac8aec
+https://github.com/user-attachments/assets/51e938df-d333-4eea-99b7-b7f0ca99466f
 
-*Showcasing movement over terrain.*
+*Video clip showcasing movement over terrain.*
 
 https://github.com/user-attachments/assets/22048b55-0638-4296-b4be-da3f67f313bb
 
-*Showcasing movement during combat.*
+*Video clip showcasing movement during combat.*
 
 ## Finite Element Analysis
 
