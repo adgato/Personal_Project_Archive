@@ -33,8 +33,10 @@ An archive of favourite projects that I have worked on, at some point in the pas
 *Showcasing grass and terrain.*
 ![journey.png](images/journey.png)
 *Showcasing tree generation.*
-![sunrise.png](images/sunrise.png)
-*Showcasing atmosphere and ocean.*
+![walking.mp4](images/walking.mp4)
+*Showcasing movement over terrain.*
+![fighting.mp4](images/fighting.mp4)
+*Showcasing movement during combat.*
 
 ## Finite Element Analysis
 
