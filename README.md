@@ -34,7 +34,7 @@ An archive of favourite projects that I have worked on, at some point in the pas
 ![journey.png](images/journey.png)
 *Screenshot showcasing tree generation.*
 
-https://github.com/user-attachments/assets/51e938df-d333-4eea-99b7-b7f0ca99466f
+https://github.com/user-attachments/assets/b6a9b464-438a-4851-a852-46e78a550ade
 
 *Video clip showcasing movement over terrain.*
 
