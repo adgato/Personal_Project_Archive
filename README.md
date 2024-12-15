@@ -44,7 +44,7 @@ https://github.com/user-attachments/assets/22048b55-0638-4296-b4be-da3f67f313bb
 
 ## Finite Element Analysis
 
-https://github.com/user-attachments/assets/ac259cf8-9136-447b-90d4-2fc1fe3b490a
+https://github.com/user-attachments/assets/2cf38d55-0700-4214-9818-6704ad401dad
 
 *Deformation example, pressing down in the centre of a cube (surface traction).*
 ![torusdeform.png](images/torusdeform.png)
