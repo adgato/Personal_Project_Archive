@@ -61,10 +61,6 @@ https://github.com/user-attachments/assets/2cf38d55-0700-4214-9818-6704ad401dad
 ![counter.gif](images/counter.gif)<br/>
 *4-bit counter.*
 
-## CustomSRP
-
-![mirrorshade.png](images/mirrorshade.png)
-
 ## Third Law
 
 ![flyby.gif](images/flyby.gif)<br/>
